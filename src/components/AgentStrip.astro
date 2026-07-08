@@ -1,0 +1,135 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+
+const agents = [
+  'Claude Code',
+  'Codex CLI',
+  'GitHub Copilot',
+  'Gemini CLI',
+  'Qwen Code',
+  'OpenCode',
+  'Auggie CLI',
+  'Qoder CLI',
+  'OpenClaw',
+  'Cline',
+  'Cursor',
+  'Devin',
+  'goose',
+  'Junie',
+  'Kilo',
+  'Kimi CLI',
+  'Mistral Vibe',
+  'Amp',
+  'Factory Droid',
+  'Grok Build',
+  'Poolside',
+  'VT Code',
+];
+---
+
+<section id="agents" class="agent-band">
+  <div class="page-shell agent-inner">
+    <div>
+      <p class="eyebrow">Agent compatibility</p>
+      <h2>Bring the agent you already use.</h2>
+      <p>
+        ACP Pro works with default agents and the growing ACP Registry. Add more
+        compatible agents as the registry expands.
+      </p>
+      <a
+        class="registry-link"
+        href="https://agentclientprotocol.com/get-started/registry"
+      >
+        Browse the ACP Registry
+        <ArrowUpRight size={16} aria-hidden="true" />
+      </a>
+    </div>
+    <div class="agent-list" aria-label="Supported default agents">
+      {agents.map((agent) => <span>{agent}</span>)}
+      <a href="https://agentclientprotocol.com/get-started/registry">
+        More agents
+        <ArrowUpRight size={14} aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .agent-band {
+    padding: 46px 0;
+    background: #111416;
+    color: #f7f7f2;
+  }
+
+  .agent-inner {
+    display: grid;
+    grid-template-columns: minmax(250px, 0.6fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 34px;
+  }
+
+  .agent-inner .eyebrow {
+    color: #9cf5cd;
+  }
+
+  .agent-inner h2 {
+    margin: 8px 0 0;
+    font-size: clamp(1.8rem, 4vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .agent-inner p {
+    max-width: 430px;
+    margin: 14px 0 0;
+    color: #a9afb5;
+  }
+
+  .registry-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    color: #9cf5cd;
+    font-size: 0.94rem;
+    font-weight: 850;
+  }
+
+  .agent-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .agent-list span,
+  .agent-list a {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #303841;
+    border-radius: 999px;
+    padding: 0.54rem 0.76rem;
+    background: #1a1f23;
+    color: #e8e6df;
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  .agent-list a {
+    border-color: rgba(0, 208, 132, 0.4);
+    background: rgba(0, 208, 132, 0.1);
+    color: #9cf5cd;
+  }
+
+  @media (max-width: 780px) {
+    .agent-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .agent-list {
+      justify-content: flex-start;
+    }
+  }
+</style>

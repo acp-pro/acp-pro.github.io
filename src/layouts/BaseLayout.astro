@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const canonical = 'https://acp-pro.github.io/';
+const title =
+  Astro.props.title ??
+  'ACP Pro - Unified Chat for AI Coding Agents in VS Code';
+const description =
+  Astro.props.description ??
+  'ACP Pro is a unified VS Code chat interface for Claude Code, Codex, Copilot, Gemini, Qwen, OpenCode, and other ACP-compatible coding agents.';
+const image = new URL('/assets/acp-pro-og.svg', canonical).toString();
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'ACP Pro',
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Windows, macOS, Linux',
+  url: canonical,
+  downloadUrl:
+    'https://marketplace.visualstudio.com/items?itemName=duclvz.acp-pro',
+  sameAs: [
+    'https://marketplace.visualstudio.com/items?itemName=duclvz.acp-pro',
+    'https://open-vsx.org/extension/duclvz/acp-pro',
+  ],
+  softwareVersion: '0.2.1',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  description,
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:site_name" content="ACP Pro" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ACP Pro">
+  <rect width="64" height="64" rx="14" fill="#080808"/>
+  <path d="M18 20.5h28c3 0 5.5 2.5 5.5 5.5v12c0 3-2.5 5.5-5.5 5.5H28.8l-8.7 6.2c-1.2.9-2.9 0-2.9-1.5v-4.7h-.2c-3 0-5.5-2.5-5.5-5.5V26c0-3 2.5-5.5 5.5-5.5Z" fill="#f7f7f2"/>
+  <path d="M24 31.5h16M24 38h10" stroke="#080808" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="42" cy="38" r="2.2" fill="#00d084"/>
+</svg>

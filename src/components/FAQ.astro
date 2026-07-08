@@ -1,0 +1,69 @@
+---
+const faqs = [
+  {
+    q: 'Which VS Code version is required?',
+    a: 'ACP Pro requires VS Code 1.96 or later and Node.js 20 or later for agents launched through npx.',
+  },
+  {
+    q: 'Does ACP Pro only work with one provider?',
+    a: 'No. ACP Pro speaks Agent Client Protocol, so it can work with Claude Code, Codex CLI, Copilot CLI, Gemini CLI, Qwen Code, OpenCode, and any compatible agent.',
+  },
+  {
+    q: 'Is the extension free?',
+    a: 'The core extension is free to install and use. A Pro license unlocks optional sharing controls such as a persistent share code and owner password.',
+  },
+  {
+    q: 'Can browser sharing be disabled?',
+    a: 'Yes. Browser sharing can be turned off per workspace from the Bridge Server settings.',
+  },
+];
+---
+
+<section class="section faq">
+  <div class="page-shell">
+    <div class="section-heading">
+      <p class="eyebrow">FAQ</p>
+      <h2>Short answers before you install.</h2>
+    </div>
+    <div class="faq-grid">
+      {
+        faqs.map((item) => (
+          <article class="surface">
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .faq-grid article {
+    padding: 24px;
+  }
+
+  .faq-grid h3 {
+    margin: 0;
+    font-size: 1.06rem;
+    line-height: 1.22;
+  }
+
+  .faq-grid p {
+    margin: 10px 0 0;
+    color: var(--muted);
+  }
+
+  @media (max-width: 680px) {
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

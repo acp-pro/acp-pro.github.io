@@ -1,0 +1,134 @@
+---
+import { ArrowUpRight, Download, GitBranch } from '@lucide/astro';
+---
+
+<header class="site-header">
+  <div class="page-shell header-inner">
+    <a class="brand" href="/" aria-label="ACP Pro home">
+      <img src="/assets/icon.png" alt="" width="36" height="36" />
+      <span>ACP Pro</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#features">Features</a>
+      <a href="#agents">Agents</a>
+      <a href="#sharing">Sharing</a>
+      <a href="#license">License</a>
+    </nav>
+    <div class="header-actions">
+      <a
+        class="icon-link"
+        href="https://github.com/acp-pro/acp-pro.github.io"
+        aria-label="Open ACP Pro on GitHub"
+      >
+        <GitBranch size={18} aria-hidden="true" />
+      </a>
+      <a
+        class="button button-dark install-link"
+        href="https://marketplace.visualstudio.com/items?itemName=duclvz.acp-pro"
+      >
+        <Download size={17} aria-hidden="true" />
+        Install
+        <ArrowUpRight size={16} aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid rgba(216, 211, 199, 0.72);
+    background: rgba(247, 244, 236, 0.86);
+    backdrop-filter: blur(18px);
+  }
+
+  .header-inner {
+    display: grid;
+    min-height: 72px;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .brand,
+  .header-actions,
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .brand {
+    gap: 10px;
+    font-size: 1.02rem;
+    font-weight: 900;
+  }
+
+  .brand img {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(18, 20, 22, 0.14);
+  }
+
+  nav {
+    justify-content: center;
+    gap: clamp(12px, 3vw, 28px);
+    color: var(--muted);
+    font-size: 0.94rem;
+    font-weight: 750;
+  }
+
+  nav a:hover {
+    color: var(--ink);
+  }
+
+  .header-actions {
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .icon-link {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.52);
+  }
+
+  .install-link {
+    min-height: 42px;
+    padding-inline: 0.92rem;
+  }
+
+  @media (max-width: 840px) {
+    .header-inner {
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+    }
+
+    nav {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .site-header {
+      position: static;
+    }
+
+    .install-link {
+      width: 42px;
+      padding: 0;
+      font-size: 0;
+    }
+
+    .install-link svg:last-child {
+      display: none;
+    }
+  }
+</style>

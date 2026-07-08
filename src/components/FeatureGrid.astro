@@ -1,0 +1,135 @@
+---
+import {
+  Bot,
+  Braces,
+  ClipboardList,
+  FileDiff,
+  FolderGit2,
+  Keyboard,
+  MonitorCog,
+  PanelsTopLeft,
+  SquareTerminal,
+} from '@lucide/astro';
+
+const features = [
+  {
+    icon: PanelsTopLeft,
+    title: 'Multi-tab agent sessions',
+    body: 'Run independent tabs with separate history, model, permission mode, and working directory.',
+  },
+  {
+    icon: FileDiff,
+    title: 'Tool calls with inline diffs',
+    body: 'Watch read, edit, bash, and web-search tools stream with friendly status labels and file diffs.',
+  },
+  {
+    icon: FolderGit2,
+    title: 'Per-tab cwd and git context',
+    body: 'Pick a working directory per tab and keep branch, staged, unstaged, stash, and ahead/behind status visible.',
+  },
+  {
+    icon: ClipboardList,
+    title: 'Plans and thinking separated',
+    body: 'Execution plans stay in a task panel while reasoning streams into an expandable thought block.',
+  },
+  {
+    icon: Braces,
+    title: 'Rich content blocks',
+    body: 'Render Markdown, code, image, audio, diff, resource, and resource-link blocks in the chat timeline.',
+  },
+  {
+    icon: Keyboard,
+    title: 'Fast composer workflows',
+    body: 'Use slash commands, file mentions, line ranges, drag-and-paste attachments, and selection-to-chat.',
+  },
+  {
+    icon: MonitorCog,
+    title: 'Settings for repeated use',
+    body: 'Add agents from the registry, reorder them, test commands, and reset defaults without editing JSON.',
+  },
+  {
+    icon: SquareTerminal,
+    title: 'Built-in diagnostics',
+    body: 'Preflight checks warn when Node or npx is missing and diagnostics show what resolves on PATH.',
+  },
+  {
+    icon: Bot,
+    title: 'ACP-native by design',
+    body: 'Any agent that implements Agent Client Protocol can join the same VS Code coding workspace.',
+  },
+];
+---
+
+<section id="features" class="section features">
+  <div class="page-shell">
+    <div class="section-heading">
+      <p class="eyebrow">Feature depth</p>
+      <h2>Built for daily agent work, not a demo panel.</h2>
+      <p>
+        ACP Pro keeps the fast parts of chat visible while giving long-running
+        coding sessions the state, controls, and recovery paths they need.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      {
+        features.map((feature) => {
+          const Icon = feature.icon;
+          return (
+            <article class="feature-card surface">
+              <Icon size={22} aria-hidden="true" />
+              <h3>{feature.title}</h3>
+              <p>{feature.body}</p>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding-top: 74px;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .feature-card {
+    min-height: 206px;
+    padding: 22px;
+  }
+
+  .feature-card svg {
+    color: var(--blue);
+  }
+
+  .feature-card h3 {
+    margin: 18px 0 0;
+    font-size: 1.06rem;
+    line-height: 1.18;
+  }
+
+  .feature-card p {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 900px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 600px) {
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

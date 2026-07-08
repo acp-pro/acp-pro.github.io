@@ -1,0 +1,97 @@
+---
+import { ArrowUpRight, GitBranch } from '@lucide/astro';
+---
+
+<footer class="site-footer">
+  <div class="page-shell footer-inner">
+    <div>
+      <a class="footer-brand" href="/">
+        <img src="/assets/icon.png" alt="" width="32" height="32" />
+        <span>ACP Pro</span>
+      </a>
+      <p>Unified chat for AI coding agents in VS Code.</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://marketplace.visualstudio.com/items?itemName=duclvz.acp-pro">
+        Marketplace
+        <ArrowUpRight size={15} aria-hidden="true" />
+      </a>
+      <a href="https://open-vsx.org/extension/duclvz/acp-pro">
+        Open VSX
+        <ArrowUpRight size={15} aria-hidden="true" />
+      </a>
+      <a href="https://github.com/acp-pro/acp-pro.github.io">
+        <GitBranch size={15} aria-hidden="true" />
+        GitHub
+      </a>
+      <a href="https://duclvz.gumroad.com/l/acp-pro">
+        Pro license
+        <ArrowUpRight size={15} aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding: 34px 0;
+    background: #fbfaf6;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-links a {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-brand {
+    gap: 10px;
+    font-weight: 900;
+  }
+
+  .footer-brand img {
+    border-radius: 7px;
+  }
+
+  .site-footer p {
+    margin: 8px 0 0;
+    color: var(--muted);
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 14px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 800;
+  }
+
+  .footer-links a {
+    gap: 5px;
+  }
+
+  .footer-links a:hover {
+    color: var(--ink);
+  }
+
+  @media (max-width: 720px) {
+    .footer-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .footer-links {
+      justify-content: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,131 @@
+---
+import { LockKeyhole, RadioTower, ShieldCheck, ToggleRight } from '@lucide/astro';
+---
+
+<section id="sharing" class="section sharing">
+  <div class="page-shell sharing-grid">
+    <div class="section-heading">
+      <p class="eyebrow">Remote bridge</p>
+      <h2>Share a live coding session without moving out of VS Code.</h2>
+      <p>
+        ACP Pro runs a small HTTP and WebSocket bridge that exposes your tabs to
+        a teammate's browser through a share code. Local-only and forwarded
+        workflows both stay under your control.
+      </p>
+    </div>
+
+    <div class="bridge dark-surface">
+      <div class="bridge-top">
+        <span>$(broadcast) ACP K7M2Q9</span>
+        <strong>Read-only</strong>
+      </div>
+      <div class="bridge-body">
+        <div class="bridge-row">
+          <RadioTower size={20} aria-hidden="true" />
+          <div>
+            <h3>Loopback or LAN</h3>
+            <p>Use VS Code port forwarding, Codespaces, SSH, or a local network address.</p>
+          </div>
+        </div>
+        <div class="bridge-row">
+          <LockKeyhole size={20} aria-hidden="true" />
+          <div>
+            <h3>Share-code auth</h3>
+            <p>Every HTTP route and WebSocket upgrade validates the active code.</p>
+          </div>
+        </div>
+        <div class="bridge-row">
+          <ToggleRight size={20} aria-hidden="true" />
+          <div>
+            <h3>Owner controls</h3>
+            <p>Pro owners can switch browser viewers between read-only and full-write access.</p>
+          </div>
+        </div>
+        <div class="bridge-row">
+          <ShieldCheck size={20} aria-hidden="true" />
+          <div>
+            <h3>Workspace scoped</h3>
+            <p>Turn browser sharing off per workspace when the chat should remain local.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sharing {
+    background: #fbfaf6;
+  }
+
+  .sharing-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(360px, 0.74fr);
+    align-items: center;
+    gap: clamp(34px, 7vw, 90px);
+  }
+
+  .bridge {
+    overflow: hidden;
+  }
+
+  .bridge-top {
+    display: flex;
+    min-height: 58px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid #2c3338;
+    padding: 0 18px;
+  }
+
+  .bridge-top span {
+    overflow-wrap: anywhere;
+    color: #f7f7f2;
+    font-weight: 850;
+  }
+
+  .bridge-top strong {
+    border: 1px solid rgba(0, 208, 132, 0.38);
+    border-radius: 999px;
+    padding: 0.32rem 0.6rem;
+    color: #9cf5cd;
+    font-size: 0.78rem;
+  }
+
+  .bridge-body {
+    display: grid;
+    gap: 2px;
+    padding: 8px;
+  }
+
+  .bridge-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    border-radius: 6px;
+    padding: 16px;
+    background: #161b1f;
+  }
+
+  .bridge-row svg {
+    color: var(--accent);
+  }
+
+  .bridge-row h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .bridge-row p {
+    margin: 5px 0 0;
+    color: #a9afb5;
+    font-size: 0.91rem;
+  }
+
+  @media (max-width: 880px) {
+    .sharing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

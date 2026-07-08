@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#111315"/>
+      <stop offset="1" stop-color="#060708"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#f6f4ee"/>
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="url(#panel)"/>
+  <rect x="112" y="112" width="976" height="406" rx="18" fill="#171a1d" stroke="#30363d"/>
+  <rect x="144" y="150" width="190" height="314" rx="14" fill="#0f1113"/>
+  <rect x="366" y="150" width="682" height="314" rx="14" fill="#101316"/>
+  <circle cx="178" cy="186" r="18" fill="#00d084"/>
+  <rect x="212" y="174" width="82" height="14" rx="7" fill="#e8e6df"/>
+  <rect x="168" y="234" width="122" height="12" rx="6" fill="#73777c"/>
+  <rect x="168" y="270" width="132" height="12" rx="6" fill="#73777c"/>
+  <rect x="168" y="306" width="98" height="12" rx="6" fill="#73777c"/>
+  <text x="412" y="236" fill="#f7f7f2" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800">ACP Pro</text>
+  <text x="414" y="306" fill="#d8d5cc" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="500">Unified chat for AI coding agents in VS Code</text>
+  <text x="414" y="372" fill="#9ba1a6" font-family="Inter, Arial, sans-serif" font-size="24">Claude Code · Codex · Copilot · Gemini · Qwen · OpenCode</text>
+  <rect x="414" y="414" width="178" height="48" rx="24" fill="#00d084"/>
+  <text x="446" y="447" fill="#06110b" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Install free</text>
+  <rect x="616" y="414" width="214" height="48" rx="24" fill="#23282d" stroke="#3d454d"/>
+  <text x="650" y="447" fill="#f7f7f2" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Remote sharing</text>
+</svg>
