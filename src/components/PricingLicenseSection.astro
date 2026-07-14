@@ -3,21 +3,24 @@ import { ArrowUpRight, Check, KeyRound } from '@lucide/astro';
 
 const included = [
   'Core ACP chat experience remains free',
-  'Persistent custom workspace share code',
-  'Owner password for browser viewers',
-  'Read-only/full-write owner toggle',
+  'Persistent custom browser access code',
+  'Owner password for browser control',
+  'Read-only/full-write browser toggle',
+  'One activation across a VS Code client profile',
   'Offline-resilient validated license state',
 ];
 ---
 
+<!-- @spec: cap-product-homepage/screenshot-led-workflow-story#understand-remote-access-beyond-teammate-sharing -->
 <section id="license" class="section license">
   <div class="page-shell license-grid">
     <div class="license-card dark-surface">
       <KeyRound size={28} aria-hidden="true" />
-      <h2>Free to install. Pro unlocks sharing controls.</h2>
+      <h2>Free to use. Pro adds control for browser access.</h2>
       <p>
-        Licensing is focused on optional remote collaboration controls. Your key
-        is device-bound and is never transmitted or stored in cleartext.
+        Every core agent workflow stays free. A Pro activation follows your VS
+        Code client profile across local and remote workspaces while protected
+        host keys keep the browser-access entitlement bound to approved environments.
       </p>
       <a class="button button-primary" href="https://duclvz.gumroad.com/l/acp-pro">
         Get a Pro license

@@ -1,6 +1,6 @@
 # Product Homepage
 
-<!-- last-verified: 2026-07-08 -->
+<!-- last-verified: 2026-07-14 -->
 
 ## Requirements
 
@@ -51,3 +51,27 @@ Intent: Publishing the main branch updates the static homepage.
 - GIVEN the static site has a build error
 - WHEN GitHub Actions runs
 - THEN deployment is rejected and the existing published site remains unchanged
+
+### Requirement: Screenshot-led workflow story
+
+Intent: Visitors can understand how ACP Pro supports visible execution, agent setup, and browser access through accurate, readable product screenshots.
+
+#### Scenario: Understand the end-to-end workflow
+
+- GIVEN a visitor is evaluating ACP Pro
+- WHEN the visitor browses the homepage workflow showcase
+- THEN the visitor encounters observable task execution before agent discovery and configuration, followed by browser access to the live workspace
+- AND the screenshots retain their source proportions while their detail views keep the primary product context visible
+
+#### Scenario: Understand remote access beyond teammate sharing
+
+- GIVEN a visitor wants to leave the primary workstation while an agent continues working
+- WHEN the visitor reads the remote workspace story
+- THEN the visitor learns that the live workspace can be checked from a phone or desktop browser for personal monitoring as well as shared review
+- AND the visitor sees that share-code, owner-password, access-mode, and workspace controls protect remote access
+
+#### Scenario: Product screenshot is unavailable
+
+- GIVEN a product screenshot cannot be displayed
+- WHEN assistive technology or fallback content presents the workflow story
+- THEN a meaningful text description identifies the product view and the capability it demonstrates

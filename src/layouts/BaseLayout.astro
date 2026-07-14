@@ -7,12 +7,14 @@ interface Props {
 }
 
 const canonical = 'https://acp-pro.github.io/';
+const authorUrl = 'https://github.com/duclvz';
 const title =
   Astro.props.title ??
   'ACP Pro - Unified Chat for AI Coding Agents in VS Code';
+// @spec: cap-product-homepage/screenshot-led-workflow-story#understand-remote-access-beyond-teammate-sharing
 const description =
   Astro.props.description ??
-  'ACP Pro is a unified VS Code chat interface for Claude Code, Codex, Copilot, Gemini, Qwen, OpenCode, and other ACP-compatible coding agents.';
+  'Run Claude Code, Codex, Copilot, Gemini, and other ACP coding agents side by side in VS Code, with isolated sessions, visible tool work, and browser access to the live workspace.';
 const image = new URL('/assets/acp-pro-og.svg', canonical).toString();
 const structuredData = {
   '@context': 'https://schema.org',
@@ -27,7 +29,13 @@ const structuredData = {
     'https://marketplace.visualstudio.com/items?itemName=duclvz.acp-pro',
     'https://open-vsx.org/extension/duclvz/acp-pro',
   ],
-  softwareVersion: '0.2.1',
+  author: {
+    '@type': 'Person',
+    name: '@duclvz',
+    url: authorUrl,
+  },
+  // @spec: cap-product-homepage/static-product-homepage#view-product-homepage
+  softwareVersion: '0.2.3',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -44,9 +52,14 @@ const structuredData = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="@duclvz" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="author" href={authorUrl} />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2348a0c7' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='24' height='24' rx='5' fill='%23080808' stroke='none'/%3E%3Cpath d='M12 8V4H8'/%3E%3Crect width='16' height='12' x='4' y='8' rx='2'/%3E%3Cpath d='M2 14h2'/%3E%3Cpath d='M20 14h2'/%3E%3Cpath d='M15 13v2'/%3E%3Cpath d='M9 13v2'/%3E%3C/svg%3E"
+    />
     <meta property="og:site_name" content="ACP Pro" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />

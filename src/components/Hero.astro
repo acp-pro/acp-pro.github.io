@@ -2,15 +2,17 @@
 import { ArrowUpRight, Download } from '@lucide/astro';
 ---
 
+<!-- @spec: cap-product-homepage/screenshot-led-workflow-story#understand-remote-access-beyond-teammate-sharing -->
 <section class="hero">
   <div class="page-shell hero-grid">
     <div class="hero-copy">
       <p class="eyebrow">VS Code extension · Agent Client Protocol</p>
       <h1>One ACP Client for every AI agent.</h1>
       <p class="hero-lede">
-        ACP Pro gives VS Code a unified, tabbed chat interface for Claude Code,
-        Codex CLI, GitHub Copilot CLI, Gemini CLI, Qwen Code, OpenCode, and any
-        ACP-compatible agent.
+        Open Claude Code, Codex, Copilot, Gemini, and other ACP agents side by
+        side. Keep each task's model, permissions, working directory, git state,
+        and history in its own tab—then open the live workspace in a browser
+        when you step away or want a second set of eyes.
       </p>
     </div>
 
@@ -18,7 +20,7 @@ import { ArrowUpRight, Download } from '@lucide/astro';
       <div class="window dark-surface">
         <img
           src="/assets/acp-pro-demo.gif"
-          alt="ACP Pro multi-tab chat with streamed tool calls and inline diffs"
+          alt="ACP Pro running parallel AI coding-agent sessions with visible tasks and controls"
           loading="eager"
           decoding="async"
         />
@@ -45,18 +47,19 @@ import { ArrowUpRight, Download } from '@lucide/astro';
         Open VSX supports VS Code-compatible IDEs including Cursor, Windsurf,
         Trae, and similar editors.
       </p>
-      <dl class="hero-stats" aria-label="Marketplace stats">
+      <!-- @spec: cap-product-homepage/static-product-homepage#view-product-homepage -->
+      <dl class="hero-stats" aria-label="Product highlights">
         <div>
-          <dt>Version</dt>
-          <dd>0.2.1</dd>
+          <dt>Release</dt>
+          <dd>0.2.3</dd>
         </div>
         <div>
-          <dt>Rating</dt>
-          <dd>5.0</dd>
+          <dt>Agents</dt>
+          <dd>Any ACP</dd>
         </div>
         <div>
-          <dt>Installs</dt>
-          <dd>2K+</dd>
+          <dt>Sessions</dt>
+          <dd>Parallel</dd>
         </div>
       </dl>
     </div>

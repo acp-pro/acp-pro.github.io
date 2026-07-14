@@ -1,54 +1,102 @@
 ---
 import { LockKeyhole, RadioTower, ShieldCheck, ToggleRight } from '@lucide/astro';
+
+const controls = [
+  {
+    icon: RadioTower,
+    title: 'Reach it where you are',
+    body: 'Use a LAN address or your existing VS Code port-forwarding, Codespaces, or SSH setup.',
+  },
+  {
+    icon: LockKeyhole,
+    title: 'Gate every connection',
+    body: 'The active share code is checked on HTTP routes and WebSocket upgrades.',
+  },
+  {
+    icon: ToggleRight,
+    title: 'Choose read or write access',
+    body: 'Pro owners can unlock controls, then switch browser access between read-only and full-write.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Keep it workspace scoped',
+    body: 'Turn the browser bridge off for any workspace that should remain local.',
+  },
+];
 ---
 
+<!-- @spec: cap-product-homepage/screenshot-led-workflow-story#understand-remote-access-beyond-teammate-sharing -->
+<!-- @spec: cap-product-homepage/screenshot-led-workflow-story#product-screenshot-is-unavailable -->
 <section id="sharing" class="section sharing">
   <div class="page-shell sharing-grid">
-    <div class="section-heading">
-      <p class="eyebrow">Remote bridge</p>
-      <h2>Share a live coding session without moving out of VS Code.</h2>
-      <p>
-        ACP Pro runs a small HTTP and WebSocket bridge that exposes your tabs to
-        a teammate's browser through a share code. Local-only and forwarded
-        workflows both stay under your control.
-      </p>
+    <div class="sharing-copy">
+      <div class="section-heading">
+        <p class="eyebrow">Remote workspace</p>
+        <h2>Step away without losing sight of the work.</h2>
+        <p>
+          Open the live workspace from a phone or desktop browser to check a
+          long-running task, respond when it needs you, or share the same view
+          with a teammate. It is another view of the workspace—not a recording
+          of your screen.
+        </p>
+      </div>
+
+      <div class="control-list">
+        {
+          controls.map((control) => {
+            const Icon = control.icon;
+            return (
+              <div class="control-item">
+                <Icon size={20} aria-hidden="true" />
+                <div>
+                  <h3>{control.title}</h3>
+                  <p>{control.body}</p>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
     </div>
 
-    <div class="bridge dark-surface">
-      <div class="bridge-top">
-        <span>$(broadcast) ACP K7M2Q9</span>
-        <strong>Read-only</strong>
+    <div class="access-proof dark-surface">
+      <div class="access-proof-heading">
+        <span>
+          <RadioTower size={18} aria-hidden="true" />
+          ACP SHA92C
+        </span>
+        <strong>Owner controlled</strong>
       </div>
-      <div class="bridge-body">
-        <div class="bridge-row">
-          <RadioTower size={20} aria-hidden="true" />
-          <div>
-            <h3>Loopback or LAN</h3>
-            <p>Use VS Code port forwarding, Codespaces, SSH, or a local network address.</p>
-          </div>
-        </div>
-        <div class="bridge-row">
-          <LockKeyhole size={20} aria-hidden="true" />
-          <div>
-            <h3>Share-code auth</h3>
-            <p>Every HTTP route and WebSocket upgrade validates the active code.</p>
-          </div>
-        </div>
-        <div class="bridge-row">
-          <ToggleRight size={20} aria-hidden="true" />
-          <div>
-            <h3>Owner controls</h3>
-            <p>Pro owners can switch browser viewers between read-only and full-write access.</p>
-          </div>
-        </div>
-        <div class="bridge-row">
-          <ShieldCheck size={20} aria-hidden="true" />
-          <div>
-            <h3>Workspace scoped</h3>
-            <p>Turn browser sharing off per workspace when the chat should remain local.</p>
-          </div>
-        </div>
+
+      <figure class="access-shot">
+        <figcaption>Copy a reachable browser link</figcaption>
+        <img
+          src="/assets/acp-pro-copy-share-url.jpg"
+          alt="ACP Pro status menu listing reachable LAN addresses and a control to copy the browser share link"
+          width="763"
+          height="348"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <div class="access-connector" aria-hidden="true">
+        <span></span>
+        <strong>Then</strong>
+        <span></span>
       </div>
+
+      <figure class="access-shot">
+        <figcaption>Unlock owner controls when needed</figcaption>
+        <img
+          src="/assets/acp-pro-remote-control-password.jpg"
+          alt="ACP Pro browser workspace requesting the owner password before enabling owner controls"
+          width="1290"
+          height="614"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
     </div>
   </div>
 </section>
@@ -62,14 +110,49 @@ import { LockKeyhole, RadioTower, ShieldCheck, ToggleRight } from '@lucide/astro
     display: grid;
     grid-template-columns: minmax(0, 0.86fr) minmax(360px, 0.74fr);
     align-items: center;
-    gap: clamp(34px, 7vw, 90px);
+    gap: clamp(38px, 7vw, 90px);
   }
 
-  .bridge {
+  .sharing-copy {
+    min-width: 0;
+  }
+
+  .control-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 24px;
+    margin-top: 34px;
+  }
+
+  .control-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 11px;
+  }
+
+  .control-item svg {
+    margin-top: 2px;
+    color: var(--blue);
+  }
+
+  .control-item h3 {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.2;
+  }
+
+  .control-item p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .access-proof {
+    min-width: 0;
     overflow: hidden;
   }
 
-  .bridge-top {
+  .access-proof-heading {
     display: flex;
     min-height: 58px;
     align-items: center;
@@ -79,53 +162,87 @@ import { LockKeyhole, RadioTower, ShieldCheck, ToggleRight } from '@lucide/astro
     padding: 0 18px;
   }
 
-  .bridge-top span {
+  .access-proof-heading span {
+    display: inline-flex;
+    min-width: 0;
+    align-items: center;
+    gap: 8px;
     overflow-wrap: anywhere;
-    color: #f7f7f2;
     font-weight: 850;
   }
 
-  .bridge-top strong {
+  .access-proof-heading span svg {
+    flex: none;
+    color: var(--accent);
+  }
+
+  .access-proof-heading strong {
+    flex: none;
     border: 1px solid rgba(0, 208, 132, 0.38);
     border-radius: 999px;
     padding: 0.32rem 0.6rem;
     color: #9cf5cd;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
   }
 
-  .bridge-body {
-    display: grid;
-    gap: 2px;
-    padding: 8px;
-  }
-
-  .bridge-row {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 14px;
-    border-radius: 6px;
-    padding: 16px;
-    background: #161b1f;
-  }
-
-  .bridge-row svg {
-    color: var(--accent);
-  }
-
-  .bridge-row h3 {
+  .access-shot {
     margin: 0;
-    font-size: 1rem;
+    padding: 16px;
   }
 
-  .bridge-row p {
-    margin: 5px 0 0;
-    color: #a9afb5;
-    font-size: 0.91rem;
+  .access-shot figcaption {
+    margin-bottom: 9px;
+    color: #c9cdd0;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
-  @media (max-width: 880px) {
+  .access-shot img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #343b40;
+    border-radius: 6px;
+    background: #0c0f12;
+  }
+
+  .access-connector {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    color: #7f878d;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .access-connector span {
+    height: 1px;
+    background: #2c3338;
+  }
+
+  @media (max-width: 920px) {
     .sharing-grid {
       grid-template-columns: 1fr;
+    }
+
+    .access-proof {
+      width: min(100%, 680px);
+    }
+  }
+
+  @media (max-width: 580px) {
+    .control-list {
+      grid-template-columns: 1fr;
+    }
+
+    .access-proof-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      padding-block: 14px;
     }
   }
 </style>

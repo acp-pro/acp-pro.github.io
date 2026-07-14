@@ -1,0 +1,339 @@
+---
+// @spec: cap-product-homepage/screenshot-led-workflow-story#understand-the-end-to-end-workflow
+// @spec: cap-product-homepage/screenshot-led-workflow-story#product-screenshot-is-unavailable
+const workflows = [
+  {
+    number: '01',
+    kind: 'execution',
+    reverse: true,
+    title: 'Keep the whole run in view.',
+    body: 'Plans, streamed tool calls, file diffs, git context, token and cost usage, model controls, and permission mode stay visible around the conversation.',
+    benefit:
+      'Review the evidence, cost, and completion state before accepting an agent’s result.',
+    primary: {
+      image: '/assets/acp-pro-sidebar-demo.jpg',
+      width: 2586,
+      height: 1506,
+      label: 'Follow live execution',
+      alt: 'ACP Pro sidebar showing parallel sessions, a live file diff, completed tool calls, git context, and composer controls',
+    },
+    detail: {
+      image: '/assets/acp-pro-tasks-plan-toolbar.jpg',
+      width: 956,
+      height: 474,
+      label: 'Plans and controls',
+      alt: 'ACP Pro task plan, token and cost usage, model toolbar, permission control, and message composer',
+    },
+  },
+  {
+    number: '02',
+    kind: 'agents',
+    reverse: false,
+    title: 'Build the agent lineup that fits the task.',
+    body: 'Browse the ACP Registry, add compatible agents, then tune their command, environment, name, order, and notifications from one settings panel.',
+    benefit:
+      'Keep specialized agents ready without hard-coding the workspace to one provider.',
+    primary: {
+      image: '/assets/acp-pro-agents-registry.jpg',
+      width: 1242,
+      height: 812,
+      label: 'Browse the registry',
+      alt: 'ACP Pro agent registry open in VS Code with compatible coding agents ready to add',
+    },
+    detail: {
+      image: '/assets/acp-pro-agents-settings.jpg',
+      width: 1253,
+      height: 969,
+      label: 'Configure your lineup',
+      alt: 'ACP Pro agent settings with editable transport, command, arguments, and environment controls',
+    },
+  },
+  // @spec: cap-product-homepage/screenshot-led-workflow-story#understand-remote-access-beyond-teammate-sharing
+  {
+    number: '03',
+    kind: 'remote',
+    reverse: true,
+    title: 'Take the live workspace with you.',
+    body: 'Open the same workspace in a desktop or phone browser. Check a long-running task after you step away, intervene when needed, or invite a teammate to review the live evidence.',
+    benefit:
+      'Agent work stays observable beyond your desk—without moving the session out of VS Code.',
+    primary: {
+      image: '/assets/acp-pro-remote-control-web.jpg',
+      width: 2492,
+      height: 1568,
+      label: 'Desktop browser',
+      alt: 'ACP Pro live workspace open in a desktop browser with agent tabs, tool results, and a file diff',
+    },
+    detail: {
+      image: '/assets/acp-pro-remote-iPhone-browser.jpg',
+      width: 1290,
+      height: 2796,
+      label: 'Phone browser',
+      alt: 'ACP Pro live workspace on a phone browser showing agent progress, diffs, usage, controls, and the composer',
+    },
+  },
+];
+---
+
+<section id="workflow" class="section workflow">
+  <div class="page-shell">
+    <div class="section-heading">
+      <p class="eyebrow">How it works</p>
+      <h2>From agent setup to work that follows you.</h2>
+      <p>
+        Choose the right agents, keep every step inspectable, and open the same
+        live workspace in a browser when you move away from VS Code.
+      </p>
+    </div>
+
+    <div class="workflow-list">
+      {
+        workflows.map((workflow) => (
+          <article
+            class:list={[
+              'workflow-item',
+              `workflow-${workflow.kind}`,
+              { reverse: workflow.reverse },
+            ]}
+          >
+            <div class="workflow-visual">
+              <figure class="workflow-shot workflow-primary dark-surface">
+                <figcaption>{workflow.primary.label}</figcaption>
+                <img
+                  src={workflow.primary.image}
+                  alt={workflow.primary.alt}
+                  width={workflow.primary.width}
+                  height={workflow.primary.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <figure class="workflow-shot workflow-detail dark-surface">
+                <figcaption>{workflow.detail.label}</figcaption>
+                <img
+                  src={workflow.detail.image}
+                  alt={workflow.detail.alt}
+                  width={workflow.detail.width}
+                  height={workflow.detail.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            </div>
+            <div class="workflow-copy">
+              <span class="workflow-number" aria-hidden="true">{workflow.number}</span>
+              <h3>{workflow.title}</h3>
+              <p>{workflow.body}</p>
+              <div class="workflow-benefit">
+                <strong>Why it helps</strong>
+                <p>{workflow.benefit}</p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .workflow {
+    overflow: hidden;
+    background: #fbfaf6;
+  }
+
+  .workflow-list {
+    display: grid;
+    gap: clamp(72px, 10vw, 128px);
+    margin-top: clamp(48px, 7vw, 80px);
+  }
+
+  .workflow-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.68fr);
+    align-items: center;
+    gap: clamp(32px, 6vw, 76px);
+  }
+
+  .workflow-item.reverse {
+    grid-template-columns: minmax(300px, 0.68fr) minmax(0, 1.12fr);
+  }
+
+  .workflow-item.reverse .workflow-visual {
+    order: 2;
+  }
+
+  .workflow-visual {
+    position: relative;
+    min-width: 0;
+    padding: 0 clamp(34px, 5vw, 58px) clamp(48px, 7vw, 78px) 0;
+  }
+
+  .workflow-shot {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .workflow-shot img {
+    width: 100%;
+    height: auto;
+    background: #0c0f12;
+  }
+
+  .workflow-shot figcaption {
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    left: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    padding: 0.35rem 0.62rem;
+    color: #f7f7f2;
+    background: rgba(8, 10, 12, 0.82);
+    font-size: 0.72rem;
+    font-weight: 850;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .workflow-primary {
+    position: relative;
+  }
+
+  .workflow-detail {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 0;
+    width: min(48%, 360px);
+  }
+
+  .workflow-execution .workflow-visual {
+    padding-right: 0;
+    padding-left: clamp(34px, 5vw, 58px);
+  }
+
+  .workflow-execution .workflow-detail {
+    right: auto;
+    left: 0;
+    width: min(52%, 390px);
+  }
+
+  .workflow-remote .workflow-visual {
+    padding-right: clamp(48px, 7vw, 84px);
+  }
+
+  .workflow-remote .workflow-detail {
+    right: 8px;
+    bottom: 8px;
+    width: min(25%, 184px);
+    border-radius: 16px;
+  }
+
+  .workflow-copy {
+    min-width: 0;
+  }
+
+  .workflow-number {
+    display: inline-flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(36, 107, 254, 0.28);
+    border-radius: 999px;
+    color: var(--blue);
+    background: rgba(36, 107, 254, 0.08);
+    font-size: 0.78rem;
+    font-weight: 900;
+  }
+
+  .workflow-copy h3 {
+    margin: 18px 0 0;
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+    line-height: 1;
+  }
+
+  .workflow-copy > p {
+    margin: 18px 0 0;
+    color: var(--muted);
+    font-size: 1.04rem;
+  }
+
+  .workflow-benefit {
+    margin-top: 24px;
+    border-left: 3px solid var(--accent);
+    padding-left: 16px;
+  }
+
+  .workflow-benefit strong {
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .workflow-benefit p {
+    margin: 5px 0 0;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  @media (max-width: 820px) {
+    .workflow-item,
+    .workflow-item.reverse {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+
+    .workflow-item.reverse .workflow-visual {
+      order: 0;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .workflow-visual,
+    .workflow-execution .workflow-visual,
+    .workflow-remote .workflow-visual {
+      display: grid;
+      padding: 0;
+    }
+
+    .workflow-primary {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .workflow-detail,
+    .workflow-execution .workflow-detail {
+      position: relative;
+      right: auto;
+      left: auto;
+      bottom: auto;
+      grid-column: 1;
+      grid-row: 2;
+      width: 72%;
+      margin-top: -34px;
+      justify-self: end;
+    }
+
+    .workflow-execution .workflow-detail {
+      justify-self: start;
+    }
+
+    .workflow-remote .workflow-detail {
+      right: auto;
+      bottom: auto;
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      align-self: end;
+      width: 30%;
+      margin: 0 8px -34px 0;
+    }
+
+    .workflow-shot figcaption {
+      top: 7px;
+      left: 7px;
+      font-size: 0.64rem;
+    }
+  }
+</style>

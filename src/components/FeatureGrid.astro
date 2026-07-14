@@ -8,54 +8,76 @@ import {
   Keyboard,
   MonitorCog,
   PanelsTopLeft,
-  SquareTerminal,
+  RefreshCcw,
 } from '@lucide/astro';
 
-const features = [
+// @spec: cap-product-homepage/screenshot-led-workflow-story#understand-the-end-to-end-workflow
+const featureGroups = [
   {
-    icon: PanelsTopLeft,
-    title: 'Multi-tab agent sessions',
-    body: 'Run independent tabs with separate history, model, permission mode, and working directory.',
+    number: '01',
+    title: 'Agent workspace',
+    summary: 'Choose the right agent and keep each task’s context separate.',
+    features: [
+      {
+        icon: PanelsTopLeft,
+        title: 'Parallel sessions, isolated context',
+        body: 'Give every task its own history, model, permission mode, and working directory.',
+      },
+      {
+        icon: MonitorCog,
+        title: 'Agent setup without JSON editing',
+        body: 'Browse the registry, add agents, reorder them, test commands, and manage updates visually.',
+      },
+      {
+        icon: Bot,
+        title: 'ACP-native, not provider-locked',
+        body: 'Bring any Agent Client Protocol implementation into the same VS Code workspace.',
+      },
+    ],
   },
   {
-    icon: FileDiff,
-    title: 'Tool calls with inline diffs',
-    body: 'Watch read, edit, bash, and web-search tools stream with friendly status labels and file diffs.',
+    number: '02',
+    title: 'Visible execution',
+    summary: 'Follow the plan, inspect the evidence, and keep results readable.',
+    features: [
+      {
+        icon: ClipboardList,
+        title: 'Plans stay readable',
+        body: 'Track execution in a task panel while reasoning stays in a separate expandable block.',
+      },
+      {
+        icon: FileDiff,
+        title: 'Tool work you can inspect',
+        body: 'Follow tool calls as they stream, with clear status, changed-line totals, and inline diffs.',
+      },
+      {
+        icon: Braces,
+        title: 'Results keep their useful shape',
+        body: 'Review Markdown, code, images, audio, diffs, resources, and links in the timeline.',
+      },
+    ],
   },
   {
-    icon: FolderGit2,
-    title: 'Per-tab cwd and git context',
-    body: 'Pick a working directory per tab and keep branch, staged, unstaged, stash, and ahead/behind status visible.',
-  },
-  {
-    icon: ClipboardList,
-    title: 'Plans and thinking separated',
-    body: 'Execution plans stay in a task panel while reasoning streams into an expandable thought block.',
-  },
-  {
-    icon: Braces,
-    title: 'Rich content blocks',
-    body: 'Render Markdown, code, image, audio, diff, resource, and resource-link blocks in the chat timeline.',
-  },
-  {
-    icon: Keyboard,
-    title: 'Fast composer workflows',
-    body: 'Use slash commands, file mentions, line ranges, drag-and-paste attachments, and selection-to-chat.',
-  },
-  {
-    icon: MonitorCog,
-    title: 'Settings for repeated use',
-    body: 'Add agents from the registry, reorder them, test commands, and reset defaults without editing JSON.',
-  },
-  {
-    icon: SquareTerminal,
-    title: 'Built-in diagnostics',
-    body: 'Preflight checks warn when Node or npx is missing and diagnostics show what resolves on PATH.',
-  },
-  {
-    icon: Bot,
-    title: 'ACP-native by design',
-    body: 'Any agent that implements Agent Client Protocol can join the same VS Code coding workspace.',
+    number: '03',
+    title: 'Continuity and control',
+    summary: 'Keep the codebase attached and recover without rebuilding the session.',
+    features: [
+      {
+        icon: FolderGit2,
+        title: 'Codebase context stays attached',
+        body: 'Keep each tab’s cwd, branch, staged changes, stash, and ahead/behind state visible.',
+      },
+      {
+        icon: Keyboard,
+        title: 'Prompt from where you code',
+        body: 'Use commands and skills, mention files or line ranges, attach context, or send a selection.',
+      },
+      {
+        icon: RefreshCcw,
+        title: 'Sessions recover gracefully',
+        body: 'Restore tabs after reloads, replay history, or start fresh when an agent drops a session.',
+      },
+    ],
   },
 ];
 ---
@@ -63,26 +85,39 @@ const features = [
 <section id="features" class="section features">
   <div class="page-shell">
     <div class="section-heading">
-      <p class="eyebrow">Feature depth</p>
-      <h2>Built for daily agent work, not a demo panel.</h2>
+      <p class="eyebrow">Built for daily work</p>
+      <h2>Depth where the workflow needs it.</h2>
       <p>
-        ACP Pro keeps the fast parts of chat visible while giving long-running
-        coding sessions the state, controls, and recovery paths they need.
+        The screenshots show the flow. Underneath it, ACP Pro keeps agent choice,
+        execution evidence, codebase state, and recovery organized for repeated use.
       </p>
     </div>
 
-    <div class="feature-grid">
+    <div class="feature-groups">
       {
-        features.map((feature) => {
-          const Icon = feature.icon;
-          return (
-            <article class="feature-card surface">
-              <Icon size={22} aria-hidden="true" />
-              <h3>{feature.title}</h3>
-              <p>{feature.body}</p>
-            </article>
-          );
-        })
+        featureGroups.map((group) => (
+          <article class="feature-group surface">
+            <header class="feature-group-heading">
+              <span aria-hidden="true">{group.number}</span>
+              <h3>{group.title}</h3>
+              <p>{group.summary}</p>
+            </header>
+            <div class="feature-list">
+              {group.features.map((feature) => {
+                const Icon = feature.icon;
+                return (
+                  <div class="feature-item">
+                    <Icon size={21} aria-hidden="true" />
+                    <div>
+                      <h4>{feature.title}</h4>
+                      <p>{feature.body}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </article>
+        ))
       }
     </div>
   </div>
@@ -93,43 +128,100 @@ const features = [
     padding-top: 74px;
   }
 
-  .feature-grid {
+  .feature-groups {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
-    margin-top: 34px;
+    margin-top: 36px;
   }
 
-  .feature-card {
-    min-height: 206px;
-    padding: 22px;
+  .feature-group {
+    min-width: 0;
+    padding: clamp(22px, 3vw, 30px);
   }
 
-  .feature-card svg {
+  .feature-group-heading span {
+    display: inline-flex;
+    min-width: 2.2rem;
+    min-height: 2.2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: var(--blue);
+    background: rgba(36, 107, 254, 0.08);
+    font-size: 0.74rem;
+    font-weight: 900;
+  }
+
+  .feature-group-heading h3 {
+    margin: 18px 0 0;
+    font-size: clamp(1.3rem, 2.2vw, 1.72rem);
+    line-height: 1.05;
+  }
+
+  .feature-group-heading p {
+    margin: 10px 0 0;
+    color: var(--muted);
+  }
+
+  .feature-list {
+    display: grid;
+    margin-top: 24px;
+  }
+
+  .feature-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    border-top: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .feature-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .feature-item svg {
+    margin-top: 2px;
     color: var(--blue);
   }
 
-  .feature-card h3 {
-    margin: 18px 0 0;
-    font-size: 1.06rem;
-    line-height: 1.18;
+  .feature-item h4 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.2;
   }
 
-  .feature-card p {
-    margin: 10px 0 0;
+  .feature-item p {
+    margin: 7px 0 0;
     color: var(--muted);
-    font-size: 0.94rem;
+    font-size: 0.91rem;
   }
 
-  @media (max-width: 900px) {
-    .feature-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+  @media (max-width: 960px) {
+    .feature-groups {
+      grid-template-columns: 1fr;
+    }
+
+    .feature-group {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.44fr) minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    .feature-list {
+      margin-top: 0;
     }
   }
 
-  @media (max-width: 600px) {
-    .feature-grid {
+  @media (max-width: 660px) {
+    .feature-group {
       grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .feature-list {
+      margin-top: 24px;
     }
   }
 </style>
