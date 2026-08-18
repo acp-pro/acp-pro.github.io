@@ -6,7 +6,7 @@ ACP Pro brings Agent Client Protocol coding agents into one VS Code workspace. R
 
 [Product website](https://acp-pro.github.io) · [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=duclvz.acp-pro) · [Open VSX](https://open-vsx.org/extension/duclvz/acp-pro) · [Pro license](https://duclvz.gumroad.com/l/acp-pro)
 
-Current release: **0.2.6**
+Current release: **0.2.7**
 
 ![ACP Pro running parallel AI coding-agent sessions in VS Code](public/assets/acp-pro-demo.gif)
 

@@ -4,7 +4,7 @@
   color-scheme: light;
   --bg: #f7f4ec;
   --ink: #121416;
-  --muted: #5f646a;
+  --muted: #52585e;
   --line: #d8d3c7;
   --panel: #ffffff;
   --panel-strong: #101316;
@@ -13,9 +13,11 @@
   --blue: #246bfe;
   --rose: #d94d73;
   --amber: #c17c10;
+  --focus-ring: rgba(36, 107, 254, 0.55);
+  --focus-ring-offset: 2px;
   font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+    "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 }
 
 * {
@@ -23,8 +25,24 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background: var(--bg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
@@ -63,6 +81,35 @@ svg {
   background: rgba(0, 208, 132, 0.45);
 }
 
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: 4px;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: -9999px;
+  left: 16px;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  border-radius: 0 0 8px 8px;
+  background: var(--panel-strong);
+  color: #f7f7f2;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-to-content:focus {
+  top: 0;
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 0;
+}
+
 .page-shell {
   width: min(1180px, calc(100% - 32px));
   margin-inline: auto;
@@ -87,8 +134,8 @@ svg {
 .section-heading h2 {
   margin: 10px 0 0;
   font-size: clamp(2rem, 5vw, 4.5rem);
-  line-height: 0.98;
-  letter-spacing: 0;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
 }
 
 .section-heading p {
@@ -96,6 +143,7 @@ svg {
   margin: 18px 0 0;
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.16rem);
+  line-height: 1.55;
 }
 
 .button {
@@ -106,49 +154,112 @@ svg {
   gap: 0.5rem;
   border: 1px solid transparent;
   border-radius: 999px;
-  padding: 0.72rem 1rem;
-  font-weight: 800;
+  padding: 0.72rem 1.2rem;
+  font-weight: 700;
   line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
   transition:
     transform 160ms ease,
     border-color 160ms ease,
     background 160ms ease,
-    color 160ms ease;
+    color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .button:hover {
   transform: translateY(-1px);
 }
 
+.button:active {
+  transform: translateY(0);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.button[aria-disabled="true"],
+.button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .button-primary {
   color: var(--accent-ink);
   background: var(--accent);
+  box-shadow: 0 6px 18px rgba(0, 208, 132, 0.22);
+}
+
+.button-primary:hover {
+  background: #00c27b;
+  box-shadow: 0 10px 26px rgba(0, 208, 132, 0.3);
 }
 
 .button-dark {
   color: #f7f7f2;
   background: var(--ink);
+  box-shadow: 0 6px 18px rgba(18, 20, 22, 0.18);
+}
+
+.button-dark:hover {
+  background: #1c2024;
+  box-shadow: 0 10px 26px rgba(18, 20, 22, 0.26);
 }
 
 .button-ghost {
   color: var(--ink);
   border-color: var(--line);
-  background: rgba(255, 255, 255, 0.52);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.button-ghost:hover {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: #c2bdb2;
 }
 
 .surface {
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.66);
-  box-shadow: 0 18px 50px rgba(33, 31, 25, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 18px 50px rgba(33, 31, 25, 0.06);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+
+.surface:hover {
+  transform: translateY(-2px);
+  border-color: #c2bdb2;
+  box-shadow: 0 26px 60px rgba(33, 31, 25, 0.1);
+}
+
+.surface:focus-within {
+  border-color: rgba(36, 107, 254, 0.4);
+  box-shadow:
+    0 26px 60px rgba(33, 31, 25, 0.1),
+    0 0 0 3px rgba(36, 107, 254, 0.12);
 }
 
 .dark-surface {
   color: #f7f7f2;
   border: 1px solid #2c3338;
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--panel-strong);
   box-shadow: 0 24px 70px rgba(12, 14, 16, 0.22);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+
+.dark-surface:hover {
+  transform: translateY(-2px);
+  border-color: #3a4349;
+  box-shadow: 0 32px 80px rgba(12, 14, 16, 0.3);
 }
 
 .kbd {

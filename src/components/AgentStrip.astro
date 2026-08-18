@@ -75,14 +75,15 @@ const agents = [
   .agent-inner h2 {
     margin: 8px 0 0;
     font-size: clamp(1.8rem, 4vw, 3.4rem);
-    line-height: 1;
-    letter-spacing: 0;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
   }
 
   .agent-inner p {
     max-width: 430px;
     margin: 14px 0 0;
     color: #a9afb5;
+    line-height: 1.55;
   }
 
   .registry-link {
@@ -90,9 +91,20 @@ const agents = [
     align-items: center;
     gap: 6px;
     margin-top: 18px;
+    padding: 0.3rem 0.1rem;
+    border-radius: 4px;
     color: #9cf5cd;
     font-size: 0.94rem;
-    font-weight: 850;
+    font-weight: 700;
+    transition: color 160ms ease;
+  }
+
+  .registry-link:hover {
+    color: #c3fbd9;
+  }
+
+  .registry-link:focus-visible {
+    outline-offset: 4px;
   }
 
   .agent-list {
@@ -114,13 +126,34 @@ const agents = [
     background: #1a1f23;
     color: #e8e6df;
     font-size: 0.9rem;
-    font-weight: 800;
+    font-weight: 700;
+    transition:
+      background 160ms ease,
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .agent-list span:hover {
+    background: #232a30;
+    border-color: #3e474f;
+    transform: translateY(-1px);
   }
 
   .agent-list a {
     border-color: rgba(0, 208, 132, 0.4);
     background: rgba(0, 208, 132, 0.1);
     color: #9cf5cd;
+  }
+
+  .agent-list a:hover {
+    background: rgba(0, 208, 132, 0.18);
+    border-color: rgba(0, 208, 132, 0.55);
+    transform: translateY(-1px);
+  }
+
+  .agent-list a:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
   }
 
   @media (max-width: 780px) {

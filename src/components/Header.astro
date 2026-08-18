@@ -1,5 +1,5 @@
 ---
-import { ArrowUpRight, Download, GitBranch } from '@lucide/astro';
+import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
 ---
 
 <!-- @spec: cap-product-homepage/screenshot-led-workflow-story#understand-remote-access-beyond-teammate-sharing -->
@@ -9,7 +9,7 @@ import { ArrowUpRight, Download, GitBranch } from '@lucide/astro';
       <img src="/assets/icon.png" alt="" width="36" height="36" />
       <span>ACP Pro</span>
     </a>
-    <nav aria-label="Primary navigation">
+    <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="#workflow">How it works</a>
       <a href="#features">Features</a>
       <a href="#agents">Agents</a>
@@ -32,6 +32,20 @@ import { ArrowUpRight, Download, GitBranch } from '@lucide/astro';
         Install
         <ArrowUpRight size={16} aria-hidden="true" />
       </a>
+      <details class="mobile-menu">
+        <summary aria-label="Open navigation menu">
+          <Menu size={20} aria-hidden="true" />
+        </summary>
+        <div class="mobile-menu-panel">
+          <nav aria-label="Mobile navigation">
+            <a href="#workflow">How it works</a>
+            <a href="#features">Features</a>
+            <a href="#agents">Agents</a>
+            <a href="#sharing">Remote access</a>
+            <a href="#license">License</a>
+          </nav>
+        </div>
+      </details>
     </div>
   </div>
 </header>
@@ -40,10 +54,11 @@ import { ArrowUpRight, Download, GitBranch } from '@lucide/astro';
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 50;
     border-bottom: 1px solid rgba(216, 211, 199, 0.72);
-    background: rgba(247, 244, 236, 0.86);
+    background: rgba(247, 244, 236, 0.92);
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
   }
 
   .header-inner {
@@ -56,7 +71,7 @@ import { ArrowUpRight, Download, GitBranch } from '@lucide/astro';
 
   .brand,
   .header-actions,
-  nav {
+  .desktop-nav {
     display: flex;
     align-items: center;
   }
@@ -64,7 +79,12 @@ import { ArrowUpRight, Download, GitBranch } from '@lucide/astro';
   .brand {
     gap: 10px;
     font-size: 1.02rem;
-    font-weight: 900;
+    font-weight: 800;
+  }
+
+  .brand:focus-visible {
+    outline-offset: 4px;
+    border-radius: 6px;
   }
 
   .brand img {
@@ -74,16 +94,26 @@ import { ArrowUpRight, Download, GitBranch } from '@lucide/astro';
     box-shadow: 0 8px 24px rgba(18, 20, 22, 0.14);
   }
 
-  nav {
+  .desktop-nav {
     justify-content: center;
     gap: clamp(12px, 3vw, 28px);
     color: var(--muted);
     font-size: 0.94rem;
-    font-weight: 750;
+    font-weight: 600;
   }
 
-  nav a:hover {
+  .desktop-nav a {
+    padding: 0.35rem 0.1rem;
+    transition: color 160ms ease;
+  }
+
+  .desktop-nav a:hover {
     color: var(--ink);
+  }
+
+  .desktop-nav a:focus-visible {
+    outline-offset: 4px;
+    border-radius: 4px;
   }
 
   .header-actions {
@@ -99,7 +129,21 @@ import { ArrowUpRight, Download, GitBranch } from '@lucide/astro';
     justify-content: center;
     border: 1px solid var(--line);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.52);
+    background: rgba(255, 255, 255, 0.6);
+    transition:
+      background 160ms ease,
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .icon-link:hover {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: #c2bdb2;
+    transform: translateY(-1px);
+  }
+
+  .icon-link:focus-visible {
+    outline-offset: 3px;
   }
 
   .install-link {
@@ -107,14 +151,95 @@ import { ArrowUpRight, Download, GitBranch } from '@lucide/astro';
     padding-inline: 0.92rem;
   }
 
+  /* Mobile menu — hidden on desktop */
+  .mobile-menu {
+    display: none;
+    position: relative;
+  }
+
+  .mobile-menu summary {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    list-style: none;
+    transition:
+      background 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu summary:hover {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: #c2bdb2;
+  }
+
+  .mobile-menu summary:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+
+  .mobile-menu[open] summary {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #f7f7f2;
+  }
+
+  .mobile-menu-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: min(280px, calc(100vw - 32px));
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px;
+    background: var(--panel);
+    box-shadow: 0 18px 50px rgba(33, 31, 25, 0.16);
+  }
+
+  .mobile-menu-panel nav {
+    display: grid;
+    gap: 4px;
+  }
+
+  .mobile-menu-panel a {
+    display: block;
+    padding: 0.7rem 0.85rem;
+    border-radius: 8px;
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 120ms ease;
+  }
+
+  .mobile-menu-panel a:hover {
+    background: rgba(36, 107, 254, 0.06);
+  }
+
+  .mobile-menu-panel a:focus-visible {
+    outline-offset: -2px;
+    border-radius: 8px;
+  }
+
   @media (max-width: 840px) {
     .header-inner {
-      grid-template-columns: auto auto;
-      justify-content: space-between;
+      grid-template-columns: auto 1fr auto;
     }
 
-    nav {
+    .desktop-nav {
       display: none;
+    }
+
+    .mobile-menu {
+      display: block;
     }
   }
 

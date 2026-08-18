@@ -35,7 +35,7 @@ const structuredData = {
     url: authorUrl,
   },
   // @spec: cap-product-homepage/static-product-homepage#view-product-homepage
-  softwareVersion: '0.2.6',
+  softwareVersion: '0.2.7',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -56,6 +56,12 @@ const structuredData = {
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
     <link rel="author" href={authorUrl} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2348a0c7' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='24' height='24' rx='5' fill='%23080808' stroke='none'/%3E%3Cpath d='M12 8V4H8'/%3E%3Crect width='16' height='12' x='4' y='8' rx='2'/%3E%3Cpath d='M2 14h2'/%3E%3Cpath d='M20 14h2'/%3E%3Cpath d='M15 13v2'/%3E%3Cpath d='M9 13v2'/%3E%3C/svg%3E"
@@ -77,6 +83,7 @@ const structuredData = {
     />
   </head>
   <body>
+    <a class="skip-to-content" href="#main-content">Skip to content</a>
     <slot />
   </body>
 </html>

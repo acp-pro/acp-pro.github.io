@@ -127,29 +127,36 @@ const controls = [
   .control-item {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 11px;
+    gap: 12px;
   }
 
   .control-item svg {
-    margin-top: 2px;
+    margin-top: 3px;
     color: var(--blue);
   }
 
   .control-item h3 {
     margin: 0;
-    font-size: 0.98rem;
-    line-height: 1.2;
+    font-size: 1rem;
+    line-height: 1.25;
+    font-weight: 700;
   }
 
   .control-item p {
     margin: 6px 0 0;
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
   }
 
   .access-proof {
     min-width: 0;
     overflow: hidden;
+  }
+
+  .access-proof.dark-surface:hover {
+    transform: none;
+    box-shadow: 0 24px 70px rgba(12, 14, 16, 0.22);
   }
 
   .access-proof-heading {
@@ -159,7 +166,7 @@ const controls = [
     justify-content: space-between;
     gap: 16px;
     border-bottom: 1px solid #2c3338;
-    padding: 0 18px;
+    padding: 0 20px;
   }
 
   .access-proof-heading span {
@@ -168,7 +175,7 @@ const controls = [
     align-items: center;
     gap: 8px;
     overflow-wrap: anywhere;
-    font-weight: 850;
+    font-weight: 700;
   }
 
   .access-proof-heading span svg {
@@ -180,21 +187,24 @@ const controls = [
     flex: none;
     border: 1px solid rgba(0, 208, 132, 0.38);
     border-radius: 999px;
-    padding: 0.32rem 0.6rem;
+    padding: 0.34rem 0.64rem;
     color: #9cf5cd;
-    font-size: 0.76rem;
+    background: rgba(0, 208, 132, 0.06);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
   }
 
   .access-shot {
     margin: 0;
-    padding: 16px;
+    padding: 18px;
   }
 
   .access-shot figcaption {
-    margin-bottom: 9px;
+    margin-bottom: 10px;
     color: #c9cdd0;
     font-size: 0.78rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
@@ -203,7 +213,7 @@ const controls = [
     width: 100%;
     height: auto;
     border: 1px solid #343b40;
-    border-radius: 6px;
+    border-radius: 8px;
     background: #0c0f12;
   }
 

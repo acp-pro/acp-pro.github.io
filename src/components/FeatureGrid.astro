@@ -150,18 +150,21 @@ const featureGroups = [
     color: var(--blue);
     background: rgba(36, 107, 254, 0.08);
     font-size: 0.74rem;
-    font-weight: 900;
+    font-weight: 800;
+    letter-spacing: 0.02em;
   }
 
   .feature-group-heading h3 {
     margin: 18px 0 0;
     font-size: clamp(1.3rem, 2.2vw, 1.72rem);
-    line-height: 1.05;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
   }
 
   .feature-group-heading p {
     margin: 10px 0 0;
     color: var(--muted);
+    line-height: 1.5;
   }
 
   .feature-list {
@@ -172,9 +175,9 @@ const featureGroups = [
   .feature-item {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 12px;
+    gap: 14px;
     border-top: 1px solid var(--line);
-    padding: 18px 0;
+    padding: 20px 0;
   }
 
   .feature-item:last-child {
@@ -182,20 +185,22 @@ const featureGroups = [
   }
 
   .feature-item svg {
-    margin-top: 2px;
+    margin-top: 3px;
     color: var(--blue);
   }
 
   .feature-item h4 {
     margin: 0;
     font-size: 1rem;
-    line-height: 1.2;
+    line-height: 1.25;
+    font-weight: 700;
   }
 
   .feature-item p {
-    margin: 7px 0 0;
+    margin: 8px 0 0;
     color: var(--muted);
-    font-size: 0.91rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
   }
 
   @media (max-width: 960px) {

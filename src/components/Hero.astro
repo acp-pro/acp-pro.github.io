@@ -51,7 +51,7 @@ import { ArrowUpRight, Download } from '@lucide/astro';
       <dl class="hero-stats" aria-label="Product highlights">
         <div>
           <dt>Release</dt>
-          <dd>0.2.6</dd>
+          <dd>0.2.7</dd>
         </div>
         <div>
           <dt>Agents</dt>
@@ -68,67 +68,72 @@ import { ArrowUpRight, Download } from '@lucide/astro';
 
 <style>
   .hero {
-    padding: clamp(54px, 8vw, 112px) 0 28px;
+    padding: clamp(64px, 9vw, 128px) 0 36px;
   }
 
   .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1.12fr);
+    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
     align-items: center;
     gap: clamp(34px, 6vw, 76px);
   }
 
   .hero-copy h1 {
     max-width: 760px;
-    margin: 14px 0 0;
-    font-size: clamp(2.7rem, 6.4vw, 6rem);
-    line-height: 0.92;
-    letter-spacing: 0;
+    margin: 18px 0 0;
+    font-size: clamp(2.8rem, 6.4vw, 5.6rem);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
   }
 
   .hero-lede {
-    max-width: 670px;
-    margin: 24px 0 0;
+    max-width: 640px;
+    margin: 28px 0 0;
     color: var(--muted);
-    font-size: clamp(1.08rem, 2vw, 1.32rem);
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.55;
   }
 
   .hero-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 12px;
-    margin-top: 14px;
+    margin-top: 28px;
   }
 
   .compat-note {
-    margin: 12px 0 0;
+    max-width: 560px;
+    margin: 14px 0 0;
     color: var(--muted);
-    font-size: 0.94rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
   }
 
   .hero-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin: 22px 0 0;
+    grid-template-columns: repeat(3, auto);
+    gap: 28px;
+    margin: 28px 0 0;
   }
 
   .hero-stats div {
     border-left: 2px solid var(--line);
-    padding-left: 14px;
+    padding-left: 16px;
   }
 
   .hero-stats dt {
     color: var(--muted);
-    font-size: 0.76rem;
-    font-weight: 800;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
   .hero-stats dd {
-    margin: 2px 0 0;
-    font-size: 1.65rem;
-    font-weight: 900;
+    margin: 4px 0 0;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
   }
 
   .hero-visual {
@@ -138,6 +143,12 @@ import { ArrowUpRight, Download } from '@lucide/astro';
   .window {
     aspect-ratio: 16 / 9;
     overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .window.dark-surface:hover {
+    transform: none;
+    box-shadow: 0 24px 70px rgba(12, 14, 16, 0.22);
   }
 
   .window img {
@@ -156,16 +167,25 @@ import { ArrowUpRight, Download } from '@lucide/astro';
 
   @media (max-width: 620px) {
     .hero {
-      padding-top: 36px;
+      padding-top: 42px;
     }
 
     .hero-actions {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     .hero-stats {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
 
+    .hero-stats div {
+      padding-left: 12px;
+    }
+
+    .hero-stats dd {
+      font-size: 1.35rem;
+    }
   }
 </style>
