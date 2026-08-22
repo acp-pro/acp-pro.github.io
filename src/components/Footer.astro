@@ -6,7 +6,7 @@ import { ArrowUpRight, GitBranch } from '@lucide/astro';
   <div class="page-shell footer-inner">
     <div>
       <a class="footer-brand" href="/">
-        <img src="/assets/icon.png" alt="" width="32" height="32" />
+        <img src="/assets/icon.png" alt="" width="28" height="28" />
         <span>ACP Pro</span>
       </a>
       <p>Unified chat for AI coding agents in VS Code.</p>
@@ -14,23 +14,23 @@ import { ArrowUpRight, GitBranch } from '@lucide/astro';
     <div class="footer-links">
       <a href="https://marketplace.visualstudio.com/items?itemName=duclvz.acp-pro">
         Marketplace
-        <ArrowUpRight size={15} aria-hidden="true" />
+        <ArrowUpRight size={14} aria-hidden="true" />
       </a>
       <a href="https://open-vsx.org/extension/duclvz/acp-pro">
         Open VSX
-        <ArrowUpRight size={15} aria-hidden="true" />
+        <ArrowUpRight size={14} aria-hidden="true" />
       </a>
       <a href="https://github.com/acp-pro/acp-pro.github.io">
-        <GitBranch size={15} aria-hidden="true" />
+        <GitBranch size={14} aria-hidden="true" />
         GitHub
       </a>
       <a href="https://duclvz.gumroad.com/l/acp-pro">
         Pro license
-        <ArrowUpRight size={15} aria-hidden="true" />
+        <ArrowUpRight size={14} aria-hidden="true" />
       </a>
       <a href="https://github.com/duclvz">
         @duclvz
-        <ArrowUpRight size={15} aria-hidden="true" />
+        <ArrowUpRight size={14} aria-hidden="true" />
       </a>
     </div>
   </div>
@@ -39,8 +39,8 @@ import { ArrowUpRight, GitBranch } from '@lucide/astro';
 <style>
   .site-footer {
     border-top: 1px solid var(--line);
-    padding: 34px 0;
-    background: #fbfaf6;
+    padding: 1.75rem 0;
+    background: var(--bg);
   }
 
   .footer-inner {
@@ -59,7 +59,8 @@ import { ArrowUpRight, GitBranch } from '@lucide/astro';
 
   .footer-brand {
     gap: 10px;
-    font-weight: 800;
+    font-size: 0.95rem;
+    font-weight: 700;
   }
 
   .footer-brand:focus-visible {
@@ -68,31 +69,34 @@ import { ArrowUpRight, GitBranch } from '@lucide/astro';
   }
 
   .footer-brand img {
-    border-radius: 7px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line-strong);
   }
 
   .site-footer p {
-    margin: 8px 0 0;
+    margin: 0.45rem 0 0;
     color: var(--muted);
+    font-size: 0.875rem;
     line-height: 1.5;
   }
 
   .footer-links {
     flex-wrap: wrap;
     justify-content: flex-end;
-    gap: 16px;
+    gap: 1rem 1.15rem;
     color: var(--muted);
-    font-size: 0.92rem;
-    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
   }
 
   .footer-links a {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 0.3rem 0.1rem;
+    gap: 4px;
+    padding: 0.25rem 0.05rem;
     border-radius: 4px;
-    transition: color 160ms ease;
+    transition: color var(--dur-state) var(--ease-feedback);
   }
 
   .footer-links a:hover {

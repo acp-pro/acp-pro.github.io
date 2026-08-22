@@ -85,18 +85,25 @@ const featureGroups = [
 <section id="features" class="section features">
   <div class="page-shell">
     <div class="section-heading">
+      <div class="rule-tick" aria-hidden="true"></div>
       <p class="eyebrow">Built for daily work</p>
-      <h2>Depth where the workflow needs it.</h2>
+      <div class="rule" aria-hidden="true"></div>
+      <h2>
+        Depth where the workflow needs it.
+        <span class="muted-line">Choice, evidence, state, and recovery.</span>
+      </h2>
+      <div class="rule" aria-hidden="true"></div>
       <p>
         The screenshots show the flow. Underneath it, ACP Pro keeps agent choice,
         execution evidence, codebase state, and recovery organized for repeated use.
       </p>
+      <div class="rule" aria-hidden="true"></div>
     </div>
 
     <div class="feature-groups">
       {
         featureGroups.map((group) => (
-          <article class="feature-group surface">
+          <article class="feature-group">
             <header class="feature-group-heading">
               <span aria-hidden="true">{group.number}</span>
               <h3>{group.title}</h3>
@@ -107,7 +114,7 @@ const featureGroups = [
                 const Icon = feature.icon;
                 return (
                   <div class="feature-item">
-                    <Icon size={21} aria-hidden="true" />
+                    <Icon size={18} aria-hidden="true" />
                     <div>
                       <h4>{feature.title}</h4>
                       <p>{feature.body}</p>
@@ -125,59 +132,80 @@ const featureGroups = [
 
 <style>
   .features {
-    padding-top: 74px;
+    background: var(--bg-subtle);
+    border-block: 1px solid var(--line);
+  }
+
+  .section-heading .eyebrow {
+    padding: 0.85rem 0;
+  }
+
+  .section-heading h2 {
+    padding: 1rem 0;
+    margin: 0;
+  }
+
+  .section-heading > p {
+    padding: 1rem 0;
+    margin: 0;
   }
 
   .feature-groups {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-    margin-top: 36px;
+    gap: 0;
+    margin-top: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--panel);
+    overflow: hidden;
   }
 
   .feature-group {
     min-width: 0;
-    padding: clamp(22px, 3vw, 30px);
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    border-right: 1px solid var(--line);
+  }
+
+  .feature-group:last-child {
+    border-right: none;
   }
 
   .feature-group-heading span {
     display: inline-flex;
-    min-width: 2.2rem;
-    min-height: 2.2rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    color: var(--blue);
-    background: rgba(36, 107, 254, 0.08);
-    font-size: 0.74rem;
-    font-weight: 800;
-    letter-spacing: 0.02em;
+    color: var(--muted-subtle);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
   }
 
   .feature-group-heading h3 {
-    margin: 18px 0 0;
-    font-size: clamp(1.3rem, 2.2vw, 1.72rem);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    margin: 0.7rem 0 0;
+    font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
   }
 
   .feature-group-heading p {
-    margin: 10px 0 0;
+    margin: 0.55rem 0 0;
     color: var(--muted);
+    font-size: 0.92rem;
     line-height: 1.5;
   }
 
   .feature-list {
     display: grid;
-    margin-top: 24px;
+    margin-top: 1.25rem;
   }
 
   .feature-item {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 14px;
+    gap: 12px;
     border-top: 1px solid var(--line);
-    padding: 20px 0;
+    padding: 1rem 0;
   }
 
   .feature-item:last-child {
@@ -185,21 +213,21 @@ const featureGroups = [
   }
 
   .feature-item svg {
-    margin-top: 3px;
-    color: var(--blue);
+    margin-top: 2px;
+    color: var(--muted);
   }
 
   .feature-item h4 {
     margin: 0;
-    font-size: 1rem;
-    line-height: 1.25;
-    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    font-weight: 600;
   }
 
   .feature-item p {
-    margin: 8px 0 0;
+    margin: 0.4rem 0 0;
     color: var(--muted);
-    font-size: 0.92rem;
+    font-size: 0.875rem;
     line-height: 1.55;
   }
 
@@ -209,24 +237,12 @@ const featureGroups = [
     }
 
     .feature-group {
-      display: grid;
-      grid-template-columns: minmax(220px, 0.44fr) minmax(0, 1fr);
-      gap: 28px;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
     }
 
-    .feature-list {
-      margin-top: 0;
-    }
-  }
-
-  @media (max-width: 660px) {
-    .feature-group {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-
-    .feature-list {
-      margin-top: 24px;
+    .feature-group:last-child {
+      border-bottom: none;
     }
   }
 </style>

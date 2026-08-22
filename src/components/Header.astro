@@ -6,7 +6,7 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
 <header class="site-header">
   <div class="page-shell header-inner">
     <a class="brand" href="/" aria-label="ACP Pro home">
-      <img src="/assets/icon.png" alt="" width="36" height="36" />
+      <img src="/assets/icon.png" alt="" width="32" height="32" />
       <span>ACP Pro</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
@@ -55,15 +55,15 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
     position: sticky;
     top: 0;
     z-index: 50;
-    border-bottom: 1px solid rgba(216, 211, 199, 0.72);
-    background: rgba(247, 244, 236, 0.92);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
 
   .header-inner {
     display: grid;
-    min-height: 72px;
+    min-height: 64px;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 24px;
@@ -78,8 +78,8 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
 
   .brand {
     gap: 10px;
-    font-size: 1.02rem;
-    font-weight: 800;
+    font-size: 0.95rem;
+    font-weight: 700;
   }
 
   .brand:focus-visible {
@@ -88,23 +88,23 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
   }
 
   .brand img {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(18, 20, 22, 0.14);
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line-strong);
   }
 
   .desktop-nav {
     justify-content: center;
-    gap: clamp(12px, 3vw, 28px);
+    gap: clamp(14px, 2.5vw, 28px);
     color: var(--muted);
-    font-size: 0.94rem;
-    font-weight: 600;
+    font-size: 0.875rem;
+    font-weight: 500;
   }
 
   .desktop-nav a {
     padding: 0.35rem 0.1rem;
-    transition: color 160ms ease;
+    transition: color var(--dur-state) var(--ease-feedback);
   }
 
   .desktop-nav a:hover {
@@ -118,28 +118,29 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
 
   .header-actions {
     justify-content: flex-end;
-    gap: 10px;
+    gap: 8px;
   }
 
   .icon-link {
     display: inline-flex;
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-strong);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.6);
+    background: transparent;
+    color: var(--muted);
     transition:
-      background 160ms ease,
-      border-color 160ms ease,
-      transform 160ms ease;
+      background var(--dur-state) var(--ease-feedback),
+      border-color var(--dur-state) var(--ease-feedback),
+      color var(--dur-state) var(--ease-feedback);
   }
 
   .icon-link:hover {
-    background: rgba(255, 255, 255, 0.92);
-    border-color: #c2bdb2;
-    transform: translateY(-1px);
+    background: var(--bg-subtle);
+    border-color: oklch(14.5% 0 0 / 0.22);
+    color: var(--ink);
   }
 
   .icon-link:focus-visible {
@@ -147,11 +148,10 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
   }
 
   .install-link {
-    min-height: 42px;
-    padding-inline: 0.92rem;
+    min-height: 40px;
+    padding-inline: 0.95rem;
   }
 
-  /* Mobile menu — hidden on desktop */
   .mobile-menu {
     display: none;
     position: relative;
@@ -159,18 +159,19 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
 
   .mobile-menu summary {
     display: inline-flex;
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-strong);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.6);
+    background: transparent;
     cursor: pointer;
     list-style: none;
     transition:
-      background 160ms ease,
-      border-color 160ms ease;
+      background var(--dur-state) var(--ease-feedback),
+      border-color var(--dur-state) var(--ease-feedback),
+      color var(--dur-state) var(--ease-feedback);
   }
 
   .mobile-menu summary::-webkit-details-marker {
@@ -178,8 +179,8 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
   }
 
   .mobile-menu summary:hover {
-    background: rgba(255, 255, 255, 0.92);
-    border-color: #c2bdb2;
+    background: var(--bg-subtle);
+    border-color: oklch(14.5% 0 0 / 0.22);
   }
 
   .mobile-menu summary:focus-visible {
@@ -190,7 +191,7 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
   .mobile-menu[open] summary {
     background: var(--ink);
     border-color: var(--ink);
-    color: #f7f7f2;
+    color: #fafafa;
   }
 
   .mobile-menu-panel {
@@ -198,35 +199,35 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
     top: calc(100% + 10px);
     right: 0;
     width: min(280px, calc(100vw - 32px));
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 12px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    padding: 8px;
     background: var(--panel);
-    box-shadow: 0 18px 50px rgba(33, 31, 25, 0.16);
+    box-shadow: 0 12px 40px oklch(14.5% 0 0 / 0.08);
   }
 
   .mobile-menu-panel nav {
     display: grid;
-    gap: 4px;
+    gap: 2px;
   }
 
   .mobile-menu-panel a {
     display: block;
     padding: 0.7rem 0.85rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     color: var(--ink);
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
-    transition: background 120ms ease;
+    transition: background var(--dur-tap) var(--ease-feedback);
   }
 
   .mobile-menu-panel a:hover {
-    background: rgba(36, 107, 254, 0.06);
+    background: var(--bg-subtle);
   }
 
   .mobile-menu-panel a:focus-visible {
     outline-offset: -2px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
   }
 
   @media (max-width: 840px) {
@@ -249,7 +250,7 @@ import { ArrowUpRight, Download, GitBranch, Menu } from '@lucide/astro';
     }
 
     .install-link {
-      width: 42px;
+      width: 40px;
       padding: 0;
       font-size: 0;
     }

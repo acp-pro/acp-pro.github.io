@@ -7,6 +7,7 @@ const workflows = [
     kind: 'execution',
     reverse: true,
     title: 'Keep the whole run in view.',
+    mutedTitle: 'Evidence before you accept the result.',
     body: 'Plans, streamed tool calls, file diffs, git context, token and cost usage, model controls, and permission mode stay visible around the conversation.',
     benefit:
       'Review the evidence, cost, and completion state before accepting an agent’s result.',
@@ -30,6 +31,7 @@ const workflows = [
     kind: 'agents',
     reverse: false,
     title: 'Build the agent lineup that fits the task.',
+    mutedTitle: 'Registry in, settings tuned, ready to run.',
     body: 'Browse the ACP Registry, add compatible agents, then tune their command, environment, name, order, and notifications from one settings panel.',
     benefit:
       'Keep specialized agents ready without hard-coding the workspace to one provider.',
@@ -54,6 +56,7 @@ const workflows = [
     kind: 'remote',
     reverse: true,
     title: 'Take the live workspace with you.',
+    mutedTitle: 'Same session. Phone or desktop browser.',
     body: 'Open the same workspace in a desktop or phone browser. Check a long-running task after you step away, intervene when needed, or invite a teammate to review the live evidence.',
     benefit:
       'Agent work stays observable beyond your desk—without moving the session out of VS Code.',
@@ -78,12 +81,19 @@ const workflows = [
 <section id="workflow" class="section workflow">
   <div class="page-shell">
     <div class="section-heading">
+      <div class="rule-tick" aria-hidden="true"></div>
       <p class="eyebrow">How it works</p>
-      <h2>From agent setup to work that follows you.</h2>
+      <div class="rule" aria-hidden="true"></div>
+      <h2>
+        From agent setup to work that follows you.
+        <span class="muted-line">Inspectable in the IDE. Reachable in a browser.</span>
+      </h2>
+      <div class="rule" aria-hidden="true"></div>
       <p>
         Choose the right agents, keep every step inspectable, and open the same
         live workspace in a browser when you move away from VS Code.
       </p>
+      <div class="rule" aria-hidden="true"></div>
     </div>
 
     <div class="workflow-list">
@@ -122,7 +132,10 @@ const workflows = [
             </div>
             <div class="workflow-copy">
               <span class="workflow-number" aria-hidden="true">{workflow.number}</span>
-              <h3>{workflow.title}</h3>
+              <h3>
+                {workflow.title}
+                <span class="muted-line">{workflow.mutedTitle}</span>
+              </h3>
               <p>{workflow.body}</p>
               <div class="workflow-benefit">
                 <strong>Why it helps</strong>
@@ -139,24 +152,43 @@ const workflows = [
 <style>
   .workflow {
     overflow: hidden;
-    background: #fbfaf6;
+    background: var(--bg);
+  }
+
+  .section-heading .rule-tick,
+  .section-heading .rule {
+    margin-inline: 0;
+  }
+
+  .section-heading .eyebrow {
+    padding: 0.85rem 0;
+  }
+
+  .section-heading h2 {
+    padding: 1rem 0;
+    margin: 0;
+  }
+
+  .section-heading > p {
+    padding: 1rem 0;
+    margin: 0;
   }
 
   .workflow-list {
     display: grid;
-    gap: clamp(72px, 10vw, 128px);
-    margin-top: clamp(48px, 7vw, 80px);
+    gap: clamp(4.5rem, 9vw, 7rem);
+    margin-top: clamp(2.75rem, 6vw, 4.5rem);
   }
 
   .workflow-item {
     display: grid;
-    grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.68fr);
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.68fr);
     align-items: center;
-    gap: clamp(32px, 6vw, 76px);
+    gap: clamp(28px, 5vw, 64px);
   }
 
   .workflow-item.reverse {
-    grid-template-columns: minmax(300px, 0.68fr) minmax(0, 1.12fr);
+    grid-template-columns: minmax(280px, 0.68fr) minmax(0, 1.12fr);
   }
 
   .workflow-item.reverse .workflow-visual {
@@ -166,17 +198,12 @@ const workflows = [
   .workflow-visual {
     position: relative;
     min-width: 0;
-    padding: 0 clamp(34px, 5vw, 58px) clamp(48px, 7vw, 78px) 0;
+    padding: 0 clamp(28px, 4vw, 48px) clamp(40px, 6vw, 64px) 0;
   }
 
   .workflow-shot {
     margin: 0;
     overflow: hidden;
-  }
-
-  .workflow-shot.dark-surface:hover {
-    transform: none;
-    box-shadow: 0 24px 70px rgba(12, 14, 16, 0.22);
   }
 
   .workflow-shot img {
@@ -188,17 +215,18 @@ const workflows = [
   .workflow-shot figcaption {
     position: absolute;
     z-index: 2;
-    top: 12px;
-    left: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    top: 10px;
+    left: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
-    padding: 0.36rem 0.68rem;
-    color: #f7f7f2;
-    background: rgba(8, 10, 12, 0.86);
+    padding: 0.32rem 0.62rem;
+    color: #f5f5f5;
+    background: rgba(10, 10, 10, 0.88);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    font-size: 0.72rem;
-    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
     letter-spacing: 0.04em;
     line-height: 1;
   }
@@ -212,29 +240,29 @@ const workflows = [
     z-index: 3;
     right: 0;
     bottom: 0;
-    width: min(48%, 360px);
+    width: min(48%, 340px);
   }
 
   .workflow-execution .workflow-visual {
     padding-right: 0;
-    padding-left: clamp(34px, 5vw, 58px);
+    padding-left: clamp(28px, 4vw, 48px);
   }
 
   .workflow-execution .workflow-detail {
     right: auto;
     left: 0;
-    width: min(52%, 390px);
+    width: min(52%, 370px);
   }
 
   .workflow-remote .workflow-visual {
-    padding-right: clamp(48px, 7vw, 84px);
+    padding-right: clamp(40px, 6vw, 72px);
   }
 
   .workflow-remote .workflow-detail {
     right: 8px;
     bottom: 8px;
-    width: min(25%, 184px);
-    border-radius: 16px;
+    width: min(25%, 176px);
+    border-radius: var(--radius-lg);
   }
 
   .workflow-copy {
@@ -243,51 +271,55 @@ const workflows = [
 
   .workflow-number {
     display: inline-flex;
-    width: 2.5rem;
-    height: 2.5rem;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(36, 107, 254, 0.28);
-    border-radius: 999px;
-    color: var(--blue);
-    background: rgba(36, 107, 254, 0.08);
-    font-size: 0.78rem;
-    font-weight: 900;
+    color: var(--muted-subtle);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
   }
 
   .workflow-copy h3 {
-    margin: 18px 0 0;
-    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
-    line-height: 1.04;
-    letter-spacing: -0.015em;
+    margin: 0.7rem 0 0;
+    font-size: clamp(1.45rem, 2.8vw, 2.15rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    text-wrap: pretty;
+  }
+
+  .workflow-copy h3 .muted-line {
+    display: block;
+    color: var(--muted);
+    font-weight: 600;
   }
 
   .workflow-copy > p {
-    margin: 18px 0 0;
+    margin: 0.95rem 0 0;
     color: var(--muted);
-    font-size: 1.06rem;
+    font-size: 0.98rem;
     line-height: 1.6;
   }
 
   .workflow-benefit {
-    margin-top: 28px;
-    border-left: 3px solid var(--accent);
-    padding-left: 18px;
+    margin-top: 1.35rem;
+    border-top: 1px solid var(--line);
+    padding-top: 0.95rem;
   }
 
   .workflow-benefit strong {
     display: block;
-    color: var(--muted);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    color: var(--muted-subtle);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   .workflow-benefit p {
-    margin: 6px 0 0;
+    margin: 0.4rem 0 0;
     color: var(--ink);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.45;
   }
 
@@ -295,7 +327,7 @@ const workflows = [
     .workflow-item,
     .workflow-item.reverse {
       grid-template-columns: 1fr;
-      gap: 26px;
+      gap: 1.35rem;
     }
 
     .workflow-item.reverse .workflow-visual {
@@ -325,7 +357,7 @@ const workflows = [
       grid-column: 1;
       grid-row: 2;
       width: 72%;
-      margin-top: -34px;
+      margin-top: -28px;
       justify-self: end;
     }
 
@@ -340,7 +372,7 @@ const workflows = [
       grid-row: 1 / span 2;
       align-self: end;
       width: 30%;
-      margin: 0 8px -34px 0;
+      margin: 0 8px -28px 0;
     }
 
     .workflow-shot figcaption {

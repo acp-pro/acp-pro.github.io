@@ -15,8 +15,12 @@ const included = [
 <section id="license" class="section license">
   <div class="page-shell license-grid">
     <div class="license-card dark-surface">
-      <KeyRound size={28} aria-hidden="true" />
-      <h2>Free to use. Pro adds control for browser access.</h2>
+      <p class="eyebrow">License</p>
+      <KeyRound size={22} aria-hidden="true" />
+      <h2>
+        Free to use.
+        <span class="muted-line">Pro adds control for browser access.</span>
+      </h2>
       <p>
         Every core agent workflow stays free. A Pro activation follows your VS
         Code client profile across local and remote workspaces while protected
@@ -33,7 +37,7 @@ const included = [
         {
           included.map((item) => (
             <li>
-              <Check size={18} aria-hidden="true" />
+              <Check size={16} aria-hidden="true" />
               <span>{item}</span>
             </li>
           ))
@@ -44,15 +48,30 @@ const included = [
 </section>
 
 <style>
+  .license {
+    background: var(--bg-subtle);
+    border-block: 1px solid var(--line);
+  }
+
   .license-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.66fr);
-    gap: 14px;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
+    gap: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    overflow: hidden;
   }
 
   .license-card,
   .included {
-    padding: clamp(24px, 5vw, 42px);
+    border: none;
+    border-radius: 0;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .license-card .eyebrow {
+    color: #7d7d7d;
+    margin: 0 0 1.1rem;
   }
 
   .license-card svg {
@@ -60,29 +79,42 @@ const included = [
   }
 
   .license-card h2 {
-    max-width: 760px;
-    margin: 28px 0 0;
-    font-size: clamp(2rem, 5vw, 4.4rem);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
+    max-width: 28rem;
+    margin: 1.1rem 0 0;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.022em;
+    text-wrap: pretty;
+  }
+
+  .license-card h2 .muted-line {
+    display: block;
+    color: #a3a3a3;
+    font-weight: 600;
   }
 
   .license-card p {
-    max-width: 640px;
-    margin: 24px 0 0;
-    color: #b9bec3;
-    font-size: 1.08rem;
+    max-width: 36rem;
+    margin: 1.1rem 0 0;
+    color: #a3a3a3;
+    font-size: 0.98rem;
     line-height: 1.6;
   }
 
   .license-card .button {
-    margin-top: 32px;
+    margin-top: 1.5rem;
+  }
+
+  .included {
+    border-left: 1px solid var(--line-strong);
+    background: var(--panel);
   }
 
   .included ul {
     display: grid;
-    gap: 18px;
-    margin: 24px 0 0;
+    gap: 0;
+    margin: 1rem 0 0;
     padding: 0;
     list-style: none;
   }
@@ -92,19 +124,32 @@ const included = [
     grid-template-columns: auto 1fr;
     gap: 12px;
     align-items: start;
+    border-top: 1px solid var(--line);
+    padding: 0.85rem 0;
     color: var(--ink);
-    font-weight: 600;
+    font-size: 0.92rem;
+    font-weight: 500;
     line-height: 1.45;
+  }
+
+  .included li:first-child {
+    border-top: none;
+    padding-top: 0;
   }
 
   .included li svg {
     margin-top: 2px;
-    color: var(--blue);
+    color: var(--accent);
   }
 
   @media (max-width: 820px) {
     .license-grid {
       grid-template-columns: 1fr;
+    }
+
+    .included {
+      border-left: none;
+      border-top: 1px solid var(--line-strong);
     }
   }
 </style>
