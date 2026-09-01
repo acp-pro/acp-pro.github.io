@@ -11,27 +11,27 @@ import {
   RefreshCcw,
 } from '@lucide/astro';
 
-// @spec: cap-product-homepage/screenshot-led-workflow-story#understand-the-end-to-end-workflow
+// @spec: static-product-homepage#view-product-homepage
 const featureGroups = [
   {
     number: '01',
-    title: 'Agent workspace',
-    summary: 'Choose the right agent and keep each task’s context separate.',
+    title: 'Session workspace',
+    summary: 'Move between active and recent work without losing each tab’s setup.',
     features: [
       {
         icon: PanelsTopLeft,
-        title: 'Parallel sessions, isolated context',
-        body: 'Give every task its own history, model, permission mode, and working directory.',
+        title: 'One switcher for every session',
+        body: 'Search Live and Recent conversations, close live sessions, and restore their history later.',
       },
       {
-        icon: MonitorCog,
-        title: 'Agent setup without JSON editing',
-        body: 'Browse the registry, add agents, reorder them, test commands, and manage updates visually.',
+        icon: FolderGit2,
+        title: 'Per-tab cwd and fork',
+        body: 'Choose a working directory from the header, then fork a tab with the same agent, model, mode, and cwd.',
       },
       {
-        icon: Bot,
-        title: 'ACP-native, not provider-locked',
-        body: 'Bring any Agent Client Protocol implementation into the same VS Code workspace.',
+        icon: RefreshCcw,
+        title: 'Bounded live processes',
+        body: 'Cap live agents and dehydrate finished idle sessions while active work, drafts, prompts, and remote views stay live.',
       },
     ],
   },
@@ -52,30 +52,30 @@ const featureGroups = [
       },
       {
         icon: Braces,
-        title: 'Results keep their useful shape',
-        body: 'Review Markdown, code, images, audio, diffs, resources, and links in the timeline.',
+        title: 'Stable rich answers',
+        body: 'Stream GitHub-Flavored Markdown without flicker, with highlighted code, LaTeX, clickable paths, and scrollable tables.',
       },
     ],
   },
   {
     number: '03',
     title: 'Continuity and control',
-    summary: 'Keep the codebase attached and recover without rebuilding the session.',
+    summary: 'Keep prompts, agent controls, and long transcripts steady as work evolves.',
     features: [
       {
-        icon: FolderGit2,
-        title: 'Codebase context stays attached',
-        body: 'Keep each tab’s cwd, branch, staged changes, stash, and ahead/behind state visible.',
-      },
-      {
         icon: Keyboard,
-        title: 'Prompt from where you code',
-        body: 'Use commands and skills, mention files or line ranges, attach context, or send a selection.',
+        title: 'Compose now or send later',
+        body: 'Mention files and selections, attach context, queue follow-ups, or set a compact timer such as 4m or 1h4m.',
       },
       {
-        icon: RefreshCcw,
-        title: 'Sessions recover gracefully',
-        body: 'Restore tabs after reloads, replay history, or start fresh when an agent drops a session.',
+        icon: Bot,
+        title: 'Controls match each agent',
+        body: 'Switch permission mode, model, reasoning effort, and extra select controls the active agent advertises.',
+      },
+      {
+        icon: MonitorCog,
+        title: 'Reading position stays put',
+        body: 'Long transcripts preserve each tab’s reading position and follow-at-bottom intent when you switch sessions.',
       },
     ],
   },

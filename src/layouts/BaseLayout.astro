@@ -16,6 +16,7 @@ const description =
   Astro.props.description ??
   'Run Claude Code, Codex, Copilot, Gemini, and other ACP coding agents side by side in VS Code, with isolated sessions, visible tool work, and browser access to the live workspace.';
 const image = new URL('/assets/acp-pro-og.svg', canonical).toString();
+// @spec: static-product-homepage#view-product-homepage
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -34,8 +35,7 @@ const structuredData = {
     name: '@duclvz',
     url: authorUrl,
   },
-  // @spec: cap-product-homepage/static-product-homepage#view-product-homepage
-  softwareVersion: '0.2.7',
+  softwareVersion: '0.3.0',
   offers: {
     '@type': 'Offer',
     price: '0',

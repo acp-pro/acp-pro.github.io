@@ -2,31 +2,33 @@
 
 **One ACP client for every AI coding agent in VS Code.**
 
-ACP Pro brings Agent Client Protocol coding agents into one VS Code workspace. Run Claude Code, Codex, Copilot, Gemini, Qwen Code, OpenCode, and other ACP-compatible agents side by side while keeping every task’s history, model, permissions, working directory, and git state isolated in its own tab.
+ACP Pro brings Agent Client Protocol coding agents into one VS Code workspace. Run the built-in Claude Code, Codex, Grok Build, OpenCode, GitHub Copilot, Qwen Code, Auggie, Qoder, and OpenClaw agents—or add another ACP-compatible agent—while keeping every task’s context isolated in its own tab.
 
 [Product website](https://acp-pro.github.io) · [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=duclvz.acp-pro) · [Open VSX](https://open-vsx.org/extension/duclvz/acp-pro) · [Pro license](https://duclvz.gumroad.com/l/acp-pro)
 
-Current release: **0.2.7**
+Current release: **0.3.0** — Grok Build as a built-in agent, stable streamed Markdown, and reliable transcript position across tab switches.
 
 ![ACP Pro running parallel AI coding-agent sessions in VS Code](public/assets/acp-pro-demo.gif)
 
 ## One workspace, many agents
 
-Pick the best agent for each task without moving between separate terminals or chat products. ACP Pro can browse the growing ACP Registry, add and configure compatible agents visually, and keep multiple sessions open at once.
+Pick the best agent for each task without moving between separate terminals or chat products. ACP Pro ships nine built-in agents, can browse the growing ACP Registry, and keeps Live and Recent conversations together in one searchable session switcher.
 
 Each tab carries its own:
 
-- Agent and conversation history
-- Model and permission mode
-- Working directory and git context
+- Searchable live and restorable conversation history
+- Agent, model, permission mode, and advertised controls
+- Working directory, git context, and one-click session forking
 - Plan, tool activity, diffs, and usage details
-- Recoverable session state
+- Preserved transcript position and bottom-follow intent
+
+Live agent processes stay under a configurable cap. Finished, unattended sessions can dehydrate after an idle timeout without interrupting active work, drafts, permission prompts, or remotely viewed sessions.
 
 ## Work you can inspect
 
-ACP Pro keeps agent execution visible instead of reducing a run to its final answer. Plans stay readable, tool calls stream with status, file changes render as diffs, and token, cost, model, and permission controls remain close to the conversation.
+ACP Pro keeps agent execution visible instead of reducing a run to its final answer. Plans stay readable, tool calls stream with status, file changes render as diffs, and GitHub-Flavored Markdown streams without flicker with highlighted code, LaTeX, clickable paths, and horizontally scrollable tables.
 
-You can prompt with slash commands and skills, mention files or line ranges, attach context, and send the active editor selection directly to a session.
+You can prompt with slash commands and skills, mention files or line ranges, attach context, send the active editor selection directly to a session, queue follow-ups mid-stream, or schedule the current draft with a compact timer such as `4m` or `1h4m`.
 
 ## A live workspace that follows you
 
