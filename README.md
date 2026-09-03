@@ -6,7 +6,7 @@ ACP Pro brings Agent Client Protocol coding agents into one VS Code workspace. R
 
 [Product website](https://acp-pro.github.io) · [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=duclvz.acp-pro) · [Open VSX](https://open-vsx.org/extension/duclvz/acp-pro) · [Pro license](https://duclvz.gumroad.com/l/acp-pro)
 
-Current release: **0.3.0** — Grok Build as a built-in agent, stable streamed Markdown, and reliable transcript position across tab switches.
+Current release: **0.3.1** — interactive Mermaid diagrams, editor-tab settings, durable attachment previews, and steadier restored transcripts.
 
 ![ACP Pro running parallel AI coding-agent sessions in VS Code](public/assets/acp-pro-demo.gif)
 
@@ -16,7 +16,7 @@ Pick the best agent for each task without moving between separate terminals or c
 
 Each tab carries its own:
 
-- Searchable live and restorable conversation history
+- Searchable live and restorable conversation history, including attachment previews
 - Agent, model, permission mode, and advertised controls
 - Working directory, git context, and one-click session forking
 - Plan, tool activity, diffs, and usage details
@@ -26,15 +26,17 @@ Live agent processes stay under a configurable cap. Finished, unattended session
 
 ## Work you can inspect
 
-ACP Pro keeps agent execution visible instead of reducing a run to its final answer. Plans stay readable, tool calls stream with status, file changes render as diffs, and GitHub-Flavored Markdown streams without flicker with highlighted code, LaTeX, clickable paths, and horizontally scrollable tables.
+ACP Pro keeps agent execution visible instead of reducing a run to its final answer. Plans stay readable, tool calls stream with status, file changes render as diffs, and GitHub-Flavored Markdown streams without flicker with highlighted code, LaTeX, clickable paths, and horizontally scrollable tables. Completed Mermaid fences become responsive diagrams with pan, zoom, source-copy, and SVG-export controls, while unfinished or invalid source remains readable.
 
-You can prompt with slash commands and skills, mention files or line ranges, attach context, send the active editor selection directly to a session, queue follow-ups mid-stream, or schedule the current draft with a compact timer such as `4m` or `1h4m`.
+You can prompt with slash commands and skills, mention files or line ranges, attach context, send the active editor selection directly to a session, queue follow-ups mid-stream, or schedule the current draft with a compact timer such as `4m` or `1h4m`. Attachment previews resolve again across clients and restored sessions, with metadata retained when the original data is unavailable.
+
+Settings opens as a reusable VS Code editor tab with dedicated agent, appearance, license, and About sections backed by extension metadata. Session-level model, permission, and advertised agent controls remain close to the conversation.
 
 ## A live workspace that follows you
 
-Remote browser access is useful for more than teammate screen sharing. Open the same live workspace from a desktop or phone browser to check a long-running task after stepping away, respond when the agent needs you, or invite someone else to review the evidence.
+Remote browser access is useful for more than teammate screen sharing. Open the same live workspace from a desktop or phone browser to check a long-running task after stepping away, respond when the agent needs you, or invite someone else to review the evidence. Narrow layouts keep tabs, toolbar actions, and the More menu reachable.
 
-Browser access stays workspace-scoped and supports share-code authentication. Pro controls add a persistent access code, owner password, and read-only/full-write mode so access can be elevated deliberately or disabled for workspaces that should remain local.
+Browser access stays workspace-scoped and supports share-code authentication. Client-local browser preferences remain separate from VS Code-only configuration. Pro controls add a persistent access code, owner password, and read-only/full-write mode so access can be elevated deliberately or disabled for workspaces that should remain local.
 
 ## Install
 
