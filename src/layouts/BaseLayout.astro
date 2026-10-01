@@ -11,12 +11,10 @@ const authorUrl = 'https://github.com/duclvz';
 const title =
   Astro.props.title ??
   'ACP Pro - Unified Chat for AI Coding Agents in VS Code';
-// @spec: cap-product-homepage/screenshot-led-workflow-story#understand-remote-access-beyond-teammate-sharing
 const description =
   Astro.props.description ??
   'Run Claude Code, Codex, Copilot, Gemini, and other ACP coding agents side by side in VS Code, with isolated sessions, visible tool work, and browser access to the live workspace.';
 const image = new URL('/assets/acp-pro-og.svg', canonical).toString();
-// @spec: static-product-homepage#view-product-homepage
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
