@@ -26,7 +26,7 @@ const controls = [
 ---
 
 <section id="sharing" class="section sharing">
-  <div class="page-shell sharing-grid">
+  <div class="page-shell">
     <div class="sharing-copy">
       <div class="section-heading">
         <div class="rule-tick" aria-hidden="true"></div>
@@ -63,59 +63,12 @@ const controls = [
         }
       </div>
     </div>
-
-    <div class="access-proof dark-surface">
-      <div class="access-proof-heading">
-        <span>
-          <RadioTower size={16} aria-hidden="true" />
-          ACP SHA92C
-        </span>
-        <strong>Owner controlled</strong>
-      </div>
-
-      <figure class="access-shot">
-        <figcaption>Copy a reachable browser link</figcaption>
-        <img
-          src="/assets/acp-pro-copy-share-url.jpg"
-          alt="ACP Pro status menu listing reachable LAN addresses and a control to copy the browser share link"
-          width="763"
-          height="348"
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
-
-      <div class="access-connector" aria-hidden="true">
-        <span></span>
-        <strong>Then</strong>
-        <span></span>
-      </div>
-
-      <figure class="access-shot">
-        <figcaption>Unlock owner controls when needed</figcaption>
-        <img
-          src="/assets/acp-pro-remote-control-password.jpg"
-          alt="ACP Pro browser workspace requesting the owner password before enabling owner controls"
-          width="1290"
-          height="614"
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
-    </div>
   </div>
 </section>
 
 <style>
   .sharing {
     background: var(--bg);
-  }
-
-  .sharing-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.78fr);
-    align-items: start;
-    gap: clamp(2rem, 6vw, 4.5rem);
   }
 
   .sharing-copy {
@@ -182,102 +135,6 @@ const controls = [
     line-height: 1.55;
   }
 
-  .access-proof {
-    min-width: 0;
-    overflow: hidden;
-  }
-
-  .access-proof-heading {
-    display: flex;
-    min-height: 52px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    border-bottom: 1px solid #2a2a2a;
-    padding: 0 1rem;
-  }
-
-  .access-proof-heading span {
-    display: inline-flex;
-    min-width: 0;
-    align-items: center;
-    gap: 8px;
-    overflow-wrap: anywhere;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-  }
-
-  .access-proof-heading span svg {
-    flex: none;
-    color: var(--accent);
-  }
-
-  .access-proof-heading strong {
-    flex: none;
-    border: 1px solid rgba(0, 208, 132, 0.32);
-    border-radius: 999px;
-    padding: 0.28rem 0.58rem;
-    color: #9cf5cd;
-    background: rgba(0, 208, 132, 0.08);
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-  }
-
-  .access-shot {
-    margin: 0;
-    padding: 1rem;
-  }
-
-  .access-shot figcaption {
-    margin-bottom: 0.65rem;
-    color: #a3a3a3;
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .access-shot img {
-    width: 100%;
-    height: auto;
-    border: 1px solid #2f2f2f;
-    border-radius: var(--radius-sm);
-    background: #0c0f12;
-  }
-
-  .access-connector {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 10px;
-    padding: 0 1rem;
-    color: #737373;
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .access-connector span {
-    height: 1px;
-    background: #2a2a2a;
-  }
-
-  @media (max-width: 920px) {
-    .sharing-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .access-proof {
-      width: min(100%, 640px);
-    }
-  }
-
   @media (max-width: 580px) {
     .control-list {
       grid-template-columns: 1fr;
@@ -293,12 +150,6 @@ const controls = [
 
     .control-item:last-child {
       border-bottom: none;
-    }
-
-    .access-proof-heading {
-      align-items: flex-start;
-      flex-direction: column;
-      padding-block: 0.85rem;
     }
   }
 </style>

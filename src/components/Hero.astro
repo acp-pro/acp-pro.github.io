@@ -40,13 +40,29 @@ import { ArrowUpRight, Download } from '@lucide/astro';
       </p>
     </div>
 
-    <div class="hero-media" aria-label="ACP Pro product preview">
+    <div class="hero-media">
       <div class="rule-tick" aria-hidden="true"></div>
       <div class="window dark-surface">
+        <video
+          width="1280"
+          height="800"
+          autoplay
+          muted
+          loop
+          playsinline
+          controls
+          poster="/assets/acp-pro-demo-poster.jpg"
+          aria-label="ACP Pro demo: pick an agent, watch the run, then open the same session on a phone"
+        >
+          <source src="/assets/acp-pro-demo.webm" type="video/webm" />
+          <source src="/assets/acp-pro-demo.mp4" type="video/mp4" />
+        </video>
         <img
-          src="/assets/acp-pro-demo.gif"
-          alt="ACP Pro running parallel AI coding-agent sessions with visible tasks and controls"
-          loading="eager"
+          class="demo-still"
+          src="/assets/acp-pro-demo-poster.jpg"
+          alt="ACP Pro in VS Code with the agent picker beside an open TypeScript file"
+          width="1280"
+          height="800"
           decoding="async"
         />
       </div>
@@ -54,7 +70,7 @@ import { ArrowUpRight, Download } from '@lucide/astro';
       <dl class="hero-stats" aria-label="Product highlights">
         <div>
           <dt>release</dt>
-          <dd>0.3.8</dd>
+          <dd>0.4.1</dd>
           <p>Current public build</p>
         </div>
         <div>
@@ -133,13 +149,30 @@ import { ArrowUpRight, Download } from '@lucide/astro';
     border-right: none;
   }
 
-  .window img {
+  .window video,
+  .window .demo-still {
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    object-position: top left;
+    aspect-ratio: 1280 / 800;
     background: #0c0f12;
+  }
+
+  .window video {
+    display: block;
+  }
+
+  .window .demo-still {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .window video {
+      display: none;
+    }
+
+    .window .demo-still {
+      display: block;
+    }
   }
 
   .hero-stats {

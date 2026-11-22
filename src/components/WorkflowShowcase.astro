@@ -2,74 +2,50 @@
 const workflows = [
   {
     number: '01',
-    kind: 'execution',
     reverse: true,
     title: 'Keep the whole run in view.',
     mutedTitle: 'Evidence before you accept the result.',
-    body: 'Plans, streamed tool calls, file diffs, git context, token and cost usage, model controls, and permission mode stay visible around the conversation.',
+    body: 'Plans, streamed tool calls, file diffs, diagrams, token and cost usage, model controls, and permission mode stay visible around the conversation.',
     benefit:
       'Review the evidence, cost, and completion state before accepting an agent’s result.',
-    primary: {
-      image: '/assets/acp-pro-sidebar-demo.jpg',
-      width: 2586,
-      height: 1506,
-      label: 'Follow live execution',
-      alt: 'ACP Pro sidebar showing parallel sessions, a live file diff, completed tool calls, git context, and composer controls',
-    },
-    detail: {
-      image: '/assets/acp-pro-tasks-plan-toolbar.jpg',
-      width: 956,
-      height: 474,
-      label: 'Plans and controls',
-      alt: 'ACP Pro task plan, token and cost usage, model toolbar, permission control, and message composer',
+    shot: {
+      image: '/assets/acp-pro-demo-run.jpg',
+      width: 1600,
+      height: 1000,
+      label: 'Follow the run',
+      alt: 'ACP Pro after a Claude Code turn: a rate-limit diagram, completed tasks, token and cost usage, and the model and permission controls',
     },
   },
   {
     number: '02',
-    kind: 'agents',
     reverse: false,
-    title: 'Build the agent lineup that fits the task.',
-    mutedTitle: 'Registry in, editor-tab settings tuned, ready to run.',
-    body: 'Browse the ACP Registry, add compatible agents, then manage agents, appearance, license, and extension details from one reusable VS Code editor tab.',
+    title: 'Tune the lineup beside the chat.',
+    mutedTitle: 'Agents, commands, and defaults in one settings tab.',
+    body: 'Open ACP Pro Settings next to the session. Set the default agent, review each command and its arguments, and keep remote control, license, and appearance in the same editor tab.',
     benefit:
-      'Keep specialized agents ready without hard-coding the workspace to one provider.',
-    primary: {
-      image: '/assets/acp-pro-agents-registry.jpg',
-      width: 1242,
-      height: 812,
-      label: 'Browse the registry',
-      alt: 'ACP Pro agent registry open in VS Code with compatible coding agents ready to add',
-    },
-    detail: {
-      image: '/assets/acp-pro-agents-settings.jpg',
-      width: 1253,
-      height: 969,
-      label: 'Configure your lineup',
-      alt: 'ACP Pro agent settings with editable transport, command, arguments, and environment controls',
+      'The lineup stays editable without leaving the workspace or hard-coding one provider.',
+    shot: {
+      image: '/assets/acp-pro-demo-settings.jpg',
+      width: 1600,
+      height: 1000,
+      label: 'Editor-tab settings',
+      alt: 'ACP Pro Settings open beside the chat, on the Agents page, with Claude Code and Codex commands ready to edit',
     },
   },
   {
     number: '03',
-    kind: 'remote',
     reverse: true,
     title: 'Take the live workspace with you.',
-    mutedTitle: 'Same session. Phone or desktop browser.',
-    body: 'Open the same workspace in a desktop or phone browser. Check a long-running task after you step away, intervene when needed, or invite a teammate to review the live evidence.',
+    mutedTitle: 'Same session, open on your phone.',
+    body: 'The browser view is that conversation: the answer, the tasks, usage, and the composer. Check a long run after you step away, or send the next prompt from the phone.',
     benefit:
-      'Agent work stays observable beyond your desk—without moving the session out of VS Code.',
-    primary: {
-      image: '/assets/acp-pro-remote-control-web.jpg',
-      width: 2492,
-      height: 1568,
-      label: 'Desktop browser',
-      alt: 'ACP Pro live workspace open in a desktop browser with agent tabs, tool results, and a file diff',
-    },
-    detail: {
-      image: '/assets/acp-pro-remote-iPhone-browser.jpg',
-      width: 1290,
-      height: 2796,
+      'Agent work stays observable beyond the editor—without moving the session out of VS Code.',
+    shot: {
+      image: '/assets/acp-pro-demo-phone.jpg',
+      width: 1600,
+      height: 1000,
       label: 'Phone browser',
-      alt: 'ACP Pro live workspace on a phone browser showing agent progress, diffs, usage, controls, and the composer',
+      alt: 'The same ACP Pro session open in VS Code and in a phone browser, with the composer ready on both',
     },
   },
 ];
@@ -96,37 +72,18 @@ const workflows = [
     <div class="workflow-list">
       {
         workflows.map((workflow) => (
-          <article
-            class:list={[
-              'workflow-item',
-              `workflow-${workflow.kind}`,
-              { reverse: workflow.reverse },
-            ]}
-          >
-            <div class="workflow-visual">
-              <figure class="workflow-shot workflow-primary dark-surface">
-                <figcaption>{workflow.primary.label}</figcaption>
-                <img
-                  src={workflow.primary.image}
-                  alt={workflow.primary.alt}
-                  width={workflow.primary.width}
-                  height={workflow.primary.height}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
-              <figure class="workflow-shot workflow-detail dark-surface">
-                <figcaption>{workflow.detail.label}</figcaption>
-                <img
-                  src={workflow.detail.image}
-                  alt={workflow.detail.alt}
-                  width={workflow.detail.width}
-                  height={workflow.detail.height}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
-            </div>
+          <article class:list={['workflow-item', { reverse: workflow.reverse }]}>
+            <figure class="workflow-shot dark-surface">
+              <figcaption>{workflow.shot.label}</figcaption>
+              <img
+                src={workflow.shot.image}
+                alt={workflow.shot.alt}
+                width={workflow.shot.width}
+                height={workflow.shot.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
             <div class="workflow-copy">
               <span class="workflow-number" aria-hidden="true">{workflow.number}</span>
               <h3>
@@ -188,22 +145,19 @@ const workflows = [
     grid-template-columns: minmax(280px, 0.68fr) minmax(0, 1.12fr);
   }
 
-  .workflow-item.reverse .workflow-visual {
+  .workflow-item.reverse .workflow-shot {
     order: 2;
   }
 
-  .workflow-visual {
+  .workflow-shot {
     position: relative;
     min-width: 0;
-    padding: 0 clamp(28px, 4vw, 48px) clamp(40px, 6vw, 64px) 0;
-  }
-
-  .workflow-shot {
     margin: 0;
     overflow: hidden;
   }
 
   .workflow-shot img {
+    display: block;
     width: 100%;
     height: auto;
     background: #0c0f12;
@@ -226,40 +180,6 @@ const workflows = [
     font-weight: 500;
     letter-spacing: 0.04em;
     line-height: 1;
-  }
-
-  .workflow-primary {
-    position: relative;
-  }
-
-  .workflow-detail {
-    position: absolute;
-    z-index: 3;
-    right: 0;
-    bottom: 0;
-    width: min(48%, 340px);
-  }
-
-  .workflow-execution .workflow-visual {
-    padding-right: 0;
-    padding-left: clamp(28px, 4vw, 48px);
-  }
-
-  .workflow-execution .workflow-detail {
-    right: auto;
-    left: 0;
-    width: min(52%, 370px);
-  }
-
-  .workflow-remote .workflow-visual {
-    padding-right: clamp(40px, 6vw, 72px);
-  }
-
-  .workflow-remote .workflow-detail {
-    right: 8px;
-    bottom: 8px;
-    width: min(25%, 176px);
-    border-radius: var(--radius-lg);
   }
 
   .workflow-copy {
@@ -327,51 +247,12 @@ const workflows = [
       gap: 1.35rem;
     }
 
-    .workflow-item.reverse .workflow-visual {
+    .workflow-item.reverse .workflow-shot {
       order: 0;
     }
   }
 
   @media (max-width: 520px) {
-    .workflow-visual,
-    .workflow-execution .workflow-visual,
-    .workflow-remote .workflow-visual {
-      display: grid;
-      padding: 0;
-    }
-
-    .workflow-primary {
-      grid-column: 1;
-      grid-row: 1;
-    }
-
-    .workflow-detail,
-    .workflow-execution .workflow-detail {
-      position: relative;
-      right: auto;
-      left: auto;
-      bottom: auto;
-      grid-column: 1;
-      grid-row: 2;
-      width: 72%;
-      margin-top: -28px;
-      justify-self: end;
-    }
-
-    .workflow-execution .workflow-detail {
-      justify-self: start;
-    }
-
-    .workflow-remote .workflow-detail {
-      right: auto;
-      bottom: auto;
-      grid-column: 1;
-      grid-row: 1 / span 2;
-      align-self: end;
-      width: 30%;
-      margin: 0 8px -28px 0;
-    }
-
     .workflow-shot figcaption {
       top: 7px;
       left: 7px;
