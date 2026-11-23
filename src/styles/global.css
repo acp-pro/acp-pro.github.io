@@ -154,6 +154,7 @@ svg {
 }
 
 .section-heading h2 .muted-line {
+  display: block;
   color: var(--muted);
   font-weight: 600;
 }

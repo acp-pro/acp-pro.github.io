@@ -2,12 +2,26 @@
 const workflows = [
   {
     number: '01',
+    reverse: false,
+    title: 'Pick the agent for the task.',
+    mutedTitle: 'A separate session for each one.',
+    body: 'Claude Code, Codex, Copilot, and the other built-ins launch in their own tab. Model, permissions, directory, and history stay with that tab.',
+    benefit: 'Switch agents without opening another product.',
+    shot: {
+      image: '/assets/acp-pro-demo-poster.jpg',
+      width: 1280,
+      height: 800,
+      label: 'Choose an agent',
+      alt: 'ACP Pro in VS Code with the agent picker beside an open TypeScript file',
+    },
+  },
+  {
+    number: '02',
     reverse: true,
-    title: 'Keep the whole run in view.',
-    mutedTitle: 'Evidence before you accept the result.',
-    body: 'Plans, streamed tool calls, file diffs, diagrams, token and cost usage, model controls, and permission mode stay visible around the conversation.',
-    benefit:
-      'Review the evidence, cost, and completion state before accepting an agent’s result.',
+    title: 'Read the run before you accept it.',
+    mutedTitle: 'The plan, the diff, and the cost stay visible.',
+    body: 'Tool calls stream with status. File changes render as diffs. Answers can include tables and diagrams, with token and cost figures beside the model and permission mode.',
+    benefit: 'Accept a result after the evidence is on screen.',
     shot: {
       image: '/assets/acp-pro-demo-run.jpg',
       width: 1600,
@@ -17,29 +31,12 @@ const workflows = [
     },
   },
   {
-    number: '02',
-    reverse: false,
-    title: 'Tune the lineup beside the chat.',
-    mutedTitle: 'Agents, commands, and defaults in one settings tab.',
-    body: 'Open ACP Pro Settings next to the session. Set the default agent, review each command and its arguments, and keep remote control, license, and appearance in the same editor tab.',
-    benefit:
-      'The lineup stays editable without leaving the workspace or hard-coding one provider.',
-    shot: {
-      image: '/assets/acp-pro-demo-settings.jpg',
-      width: 1600,
-      height: 1000,
-      label: 'Editor-tab settings',
-      alt: 'ACP Pro Settings open beside the chat, on the Agents page, with Claude Code and Codex commands ready to edit',
-    },
-  },
-  {
     number: '03',
-    reverse: true,
-    title: 'Take the live workspace with you.',
-    mutedTitle: 'Same session, open on your phone.',
-    body: 'The browser view is that conversation: the answer, the tasks, usage, and the composer. Check a long run after you step away, or send the next prompt from the phone.',
-    benefit:
-      'Agent work stays observable beyond the editor—without moving the session out of VS Code.',
+    reverse: false,
+    title: 'Leave the desk and keep the session.',
+    mutedTitle: 'The same workspace, open in a browser.',
+    body: 'Check a long run, respond when the agent is waiting, or send the next prompt from a phone. Browser access can be turned off per workspace. Pro adds a persistent access code, an owner password, and read-only or full-write mode.',
+    benefit: 'The session stays in VS Code while you are away from the desk.',
     shot: {
       image: '/assets/acp-pro-demo-phone.jpg',
       width: 1600,
@@ -58,13 +55,13 @@ const workflows = [
       <p class="eyebrow">How it works</p>
       <div class="rule" aria-hidden="true"></div>
       <h2>
-        From agent setup to work that follows you.
-        <span class="muted-line">Inspectable in the IDE. Reachable in a browser.</span>
+        Pick an agent. Watch the run. Take it with you.
+        <span class="muted-line">One workspace for the session, the evidence, and a browser view.</span>
       </h2>
       <div class="rule" aria-hidden="true"></div>
       <p>
-        Choose the right agents, keep every step inspectable, and open the same
-        live workspace in a browser when you move away from VS Code.
+        Start Claude Code on one tab and Codex on the next. The diff stays in
+        the transcript, and a phone can open that same session.
       </p>
       <div class="rule" aria-hidden="true"></div>
     </div>

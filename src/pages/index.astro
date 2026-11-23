@@ -1,26 +1,27 @@
 ---
 import AgentStrip from '../components/AgentStrip.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
 import FAQ from '../components/FAQ.astro';
-import FeatureGrid from '../components/FeatureGrid.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import PricingLicenseSection from '../components/PricingLicenseSection.astro';
-import SharingSection from '../components/SharingSection.astro';
 import WorkflowShowcase from '../components/WorkflowShowcase.astro';
+import { getInstallCounts } from '../data/installs';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const counts = await getInstallCounts();
 ---
 
 <BaseLayout>
   <Header />
   <main id="main-content">
-    <Hero />
+    <Hero counts={counts} />
     <AgentStrip />
     <WorkflowShowcase />
-    <FeatureGrid />
-    <SharingSection />
     <PricingLicenseSection />
     <FAQ />
+    <ClosingCTA counts={counts} />
   </main>
   <Footer />
 </BaseLayout>

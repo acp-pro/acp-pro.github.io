@@ -1,17 +1,6 @@
 ---
 import { ArrowUpRight } from '@lucide/astro';
-
-const agents = [
-  'Claude Code',
-  'Codex',
-  'Grok Build',
-  'OpenCode',
-  'GitHub Copilot',
-  'Qwen Code',
-  'Auggie CLI',
-  'Qoder CLI',
-  'OpenClaw',
-];
+import { agents } from '../data/agents';
 ---
 
 <section id="agents" class="agent-band">
@@ -19,12 +8,12 @@ const agents = [
     <div class="agent-copy">
       <p class="eyebrow">Agent compatibility</p>
       <h2>
-        Built-ins, ready to launch.
-        <span class="muted-line">Now with a dedicated editor-tab settings experience.</span>
+        {agents.length} agents, ready to launch.
+        <span class="muted-line">Any ACP agent can join them.</span>
       </h2>
       <p>
-        Start any built-in agent through its maintained ACP command, or add more
-        compatible agents from the growing ACP Registry.
+        Each built-in starts from its maintained ACP command. More agents come
+        from the registry.
       </p>
       <a
         class="registry-link"
